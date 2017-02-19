@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjsf.wfma.bean.mappingxml.UserMapper">
+    <select id="login" parameterType="String" resultType="com.cjsf.wfma.bean.User">
+        select * from user where nickname = #{nickname} and password = #{password}
+    </select>
+    <select id="TestD" parameterType="String" resultType="com.cjsf.wfma.bean.User">
+        select * from user where nickname = '王胜' and password = '222222'
+    </select>
+    <select id="selectPresidentD" parameterType="String" resultType="com.cjsf.wfma.bean.User">
+        select * from user where name = '蒲兰杨' and password = '111111'
+    </select>
+    <select id="selectJL" resultType="com.cjsf.wfma.bean.User">
+    	SELECT * FROM USER WHERE TYPE = '教练' LIMIT 10
+    </select>
+    <select id="selectNewXYD" resultType="com.cjsf.wfma.bean.User">
+    	SELECT * FROM USER WHERE TYPE='学员' ORDER BY id DESC LIMIT 10
+    </select>
+</mapper>

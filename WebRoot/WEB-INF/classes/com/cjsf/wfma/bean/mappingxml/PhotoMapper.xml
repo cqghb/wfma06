@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjsf.wfma.bean.mappingxml.PhotoMapper">
+    <select id="selectcourselb" parameterType="String" resultType="com.cjsf.wfma.bean.Photo">
+        select * from course where coursestate = '轮播'
+    </select>
+    
+</mapper>

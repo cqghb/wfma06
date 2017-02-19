@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="allData" namespace="/" extends="struts-default">
+		<action name="wfma" class="wfma" method="wfma">
+			<result name="success" type="chain">
+				<param name="actionName">selectPresident</param>
+				<param name="namespace">/user</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>    

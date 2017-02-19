@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+/**页面整体样式**/
+.all{
+	margin:0 10% 0 10%;
+	padding:0;
+	background-color: #333333;
+	color: #FFFFFF;
+	font-size: 15px;
+}

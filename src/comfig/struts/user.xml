@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="loginAction" class="userAction" method="Test">
+			<result name="success">/commonalitychildrenpage/NewFile.jsp</result>
+		</action>
+		<action name="selectPresident" class="userAction" method="selectPresident">
+			<result name="success" type="chain">
+				<param name="actionName">logoAction</param>
+				<param name="namespace">/logons</param>
+			</result>
+		</action>
+		<action name="xzDetails" class="userAction" method="selectPresident">
+			<result name="success">/WEB-INF/user/xzInformetion.jsp</result>
+		</action>
+	</package>
+</struts>

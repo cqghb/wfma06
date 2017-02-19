@@ -1,0 +1,133 @@
+@CHARSET "UTF-8";
+/**logo容器样式**/
+.left_logo{
+	float:left;
+	margin-left: 0px;
+	width: 7%;
+    height: 10%;
+    border: 1px solid red;
+	
+}
+a{
+	color:#FFFFFF;
+}
+/**logo样式**/
+.logo{
+	border-radius:17px;
+	width: 100%;
+	height: 100%;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    line-height: 20px;
+    padding: 0;
+}
+.navbar-brand-logo{
+	border-radius:17px;
+	width: 100%;
+	height: 100%;
+}
+
+.nav {
+    width: 100%;
+}
+.container-fluid{
+	float: left;
+	width: 100%;
+    border: 1px solid red;
+}
+/**导航查询样式**/
+.searchNav{
+	float: left;
+	margin-top:5px;
+}
+/**导航登录样式**/
+.logoInNav{
+	/**float: right;**/
+	margin:13 200 0 13;
+}
+/**导航样式**/
+.nav-tabs > li > a {
+    line-height: 3;
+}
+/**导航下边框以及背景颜色样式**/
+.nav-tabs {
+    border-bottom: 1px solid #333333;
+}
+.navbar-default {
+    background-color: #333333;
+    border-color: #333333;
+    margin:0 10% 0 10%;
+    border: 1px solid red;
+}
+/**轮播图片样式**/
+.carouselCourses{
+	width: 20%;
+	margin-left: 40%;
+	padding: 0;
+}
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 7%;
+}
+
+.navbar-form {
+    margin-top: 18px;
+}
+/**轮播图片高度样式**/
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    height: 25%;
+}
+
+.swiper-container {
+	margin-top:7%;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    color:#000000;
+  }
+ .swiper-container2{
+	width: 30%;
+    height: 30%;
+    /** margin-left: auto;
+    margin-right: auto;**/
+}
+ 
+ .swiper-container a{
+ 	color:#000000;
+ }
+ /**首页第一个页面的窗口样式**/
+ .ppp-wfjj{
+ 	float: left;
+ 	width: 50%;
+ 	height: 50%;
+ 	margin-bottom: 0;
+ }
+ /***万府简介图片外面的div样式***/
+ .wfinimg{
+  float: left;
+  width: 50%;
+  border:1px solid red;
+  height: 89%;
+		margin: -15px 0 0 -15px;
+ }
+ /***万府简介图片样式***/
+ .wfimg{
+ 	width: 100%;
+ 	height: 100%;
+ }
+ /**地图div样式**/
+ .mappanel{
+ 	width: 100%;
+ 	height: 90%;
+ }
+ /**“更多”的样式**/
+ .gd{
+ 	float:right;
+ 	clear: left;
+ }
