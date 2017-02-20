@@ -213,7 +213,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="#" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
-							这里放课程
+							<table style="background-color: black;">
+							<tr>
+								<th>课程图片</th>
+								<th>课程名称</th>
+								<th>课程说明</th>
+							</tr>
+							<c:forEach items="${allCurse }" var="allCurse">
+								<tr>
+									<td>
+										<img alt="课程图片" src="<%=basePath%>${allCurse.courseimg}" width="30px" height="30px">
+									</td>
+									<td>${allCurse.coursename }</td>
+									<td>${allCurse.courseexplain }</td>
+								</tr>
+							</c:forEach>
+							</table>
 						</div>
 					</div>
 				</div>
