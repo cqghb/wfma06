@@ -30,5 +30,14 @@ public class CourseDaoImpl extends SqlSessionDaoSupport implements CourseDao {
 	public List<Course> selectByCourseState() {		
 		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.CourseMapper.selectcourselb");
 	}
+	
+	/**
+	 * @category 查询所有课程
+	 * @return 返回课程集合
+	 */
+	@Override
+	public List<Course> selectAllCourseD() {
+		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.CourseMapper.selectAllCourseD");
+	}
 
 }
