@@ -2,9 +2,6 @@ package com.cjsf.wfma.action;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServletRequest; 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

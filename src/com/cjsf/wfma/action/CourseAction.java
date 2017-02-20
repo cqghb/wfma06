@@ -17,7 +17,8 @@ import com.cjsf.wfma.service.CourseService;
 @Scope("prototype")
 public class CourseAction {
 
-	private List<Course> coursesList; 
+	private List<Course> coursesList;//轮播课程
+	private List<Course> allCurse;//所有课程
 	@Autowired
 	private CourseService courseService;
 	
@@ -33,6 +34,13 @@ public class CourseAction {
 	public void setCourseService(CourseService courseService) {
 		this.courseService = courseService;
 	}
+	
+	public List<Course> getAllCurse() {
+		return allCurse;
+	}
+	public void setAllCurse(List<Course> allCurse) {
+		this.allCurse = allCurse;
+	}
 	/**
 	 * @category 查询轮播课程
 	 * @return
@@ -45,6 +53,17 @@ public class CourseAction {
 			return "error";
 		}
 	}
-	
+	/**
+	 * @category 查询所有的课程
+	 * @return 返回课程集合
+	 */
+	public String selectAllCourseAction(){
+		allCurse = courseService.selectAllCourseS();
+		if(allCurse!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
 	
 }
