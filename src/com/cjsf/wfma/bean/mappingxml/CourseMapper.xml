@@ -5,4 +5,7 @@
         select * from course where coursestate = '轮播'
     </select>
     
+    <select id="selectAllCourseD" resultType="com.cjsf.wfma.bean.Course">
+    	SELECT * FROM course LIMIT 10
+    </select>
 </mapper>
