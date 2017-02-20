@@ -15,4 +15,10 @@ public interface CourseService {
 	 * @return 返回几门课程
 	 */
 	public List<Course> selectByCourseStateService();
+	
+	/**
+	 * @category 查询所有课程
+	 * @return 返回课程集合
+	 */
+	public List<Course> selectAllCourseS();
 }
