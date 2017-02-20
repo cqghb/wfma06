@@ -7,7 +7,7 @@
 		<action name="dynamicAction" class="dynamicAction" method="selectDynamicListA">
 			<result name="success" type="chain">
 				<param name="namespace">/course</param>
-				<param name="actionName">courseAction</param>
+				<param name="actionName">selectAllCourse</param>
 			</result>
 		</action>
 	</package>
