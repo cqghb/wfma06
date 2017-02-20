@@ -142,12 +142,13 @@ CREATE TABLE `user` (
   `email` varchar(20) DEFAULT '@qq.com' COMMENT '邮箱',
   `type` varchar(10) DEFAULT '学员' COMMENT '用户类别[管理员|教练|学员]',
   `briefintroduction` text COMMENT '个人简介',
+  `head` varchar(255) DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`nickname`,`password`,`name`,`sex`,`age`,`brithday`,`address`,`tell`,`qq`,`email`,`type`,`briefintroduction`) values (1,'蒲兰杨','111111','蒲兰杨','男',25,'1991-06-20','四川省达州市万源市罗文镇','18781990207','495486417','495486417@qq.com','管理员','这是个人简介'),(2,'王胜','222222','王胜','男',24,'1992-03-03','四川省达州市万源市曾家乡覃家坝村11社','13564823248','1689841661','1689841661@qq.com','管理员','这是个人简介'),(3,'小张','333333','张杰','男',10,'2006-02-02','四川省成都市双流区','22222222222','222222222','222222222@qq.com','学员','这是个人简介');
+insert  into `user`(`id`,`nickname`,`password`,`name`,`sex`,`age`,`brithday`,`address`,`tell`,`qq`,`email`,`type`,`briefintroduction`,`head`) values (1,'蒲兰杨的昵称','111111','蒲兰杨','男',25,'1991-06-20','四川省达州市万源市罗文镇','18781990207','495486417','495486417@qq.com','管理员','万府武术CEO，创始人，教练，获得过多项国家级认证。','images/head/plytouxiang.jpeg'),(2,'王胜的昵称','222222','王胜','男',24,'1992-03-03','四川省达州市万源市曾家乡覃家坝村11社','13564823248','1689841661','1689841661@qq.com','管理员','这是个人简介','images/head/gly.jpg'),(3,'小张的昵称','333333','张杰','女',10,'2006-02-02','四川省成都市双流区','22222222222','222222222','222222222@qq.com','学员','这是个人简介','images/head/xueyuannv.jpg'),(4,'小李的昵称','123456','小李','男',22,'1996-01-01','上海市','1212121212121','1111111111','1111111111@qq.com','教练','这是小李的个人简介，\r\n这是小李的个人简介，\r\n这是小李的个人简介，\r\n这是小李的个人简介！','images/head/commonTimg.jpg'),(5,'小高的昵称','123456','小高','男',22,'1996-02-02','江苏','1212121212121','1111111111','1111111111@qq.com','教练','这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，这是小高的个人简介，！','images/head/commonTimg.jpg'),(6,'小明的昵称','123456','小明','男',15,'2007-01-01','四川','121212121212','1212121212','1212121212@qq.com','学员','这是小明的个人简介，这是小明的个人简介，这是小明的个人简介，这是小明的个人简介，这是小明的个人简介！','images/head/xueyuannan.jpg');
 
 /*Table structure for table `wfinformation` */
 
