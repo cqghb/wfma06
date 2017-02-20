@@ -36,4 +36,13 @@ public class CourseServiceImpl implements CourseService {
 		return courseDao.selectByCourseState();
 	}
 
+	/**
+	 * @category 查询所有课程
+	 * @return 返回课程集合
+	 */
+	@Override
+	public List<Course> selectAllCourseS() {
+		return courseDao.selectAllCourseD();
+	}
+
 }
