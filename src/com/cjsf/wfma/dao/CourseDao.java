@@ -15,4 +15,9 @@ public interface CourseDao {
 	 * @return
 	 */
 	public List<Course> selectByCourseState();
+	/**
+	 * @category 查询所有课程
+	 * @return 返回课程集合
+	 */
+	public List<Course> selectAllCourseD();
 }
