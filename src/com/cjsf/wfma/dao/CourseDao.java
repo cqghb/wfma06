@@ -3,6 +3,7 @@ package com.cjsf.wfma.dao;
 import java.util.List;
 
 import com.cjsf.wfma.bean.Course;
+import com.cjsf.wfma.bean.Page;
 
 /**
  * @author Administrator
@@ -20,4 +21,16 @@ public interface CourseDao {
 	 * @return 返回课程集合
 	 */
 	public List<Course> selectAllCourseD();
+	
+	/**
+	 * @category 分页
+	 * @return
+	 */
+	public List<Course> getList(Page page);
+	
+	/**
+	 * @category 获取数据总条数
+	 * @return 返回数据总的条数
+	 */
+	public int getCount();
 }

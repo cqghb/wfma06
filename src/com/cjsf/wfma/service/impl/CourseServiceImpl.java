@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cjsf.wfma.bean.Course;
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.dao.CourseDao;
 import com.cjsf.wfma.service.CourseService;
+import com.cjsf.wfma.util.SearchPageUtil;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @author Administrator
@@ -43,6 +46,36 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public List<Course> selectAllCourseS() {
 		return courseDao.selectAllCourseD();
+	}
+
+	/**
+	 * @category 根据条件获取
+	 * @param course 课程实体类
+	 * @param page 页面实体类
+	 * @return
+	 */
+	@Override
+	public List<Course> getList() {
+		SearchPageUtil spu = new SearchPageUtil();
+		Page page = new Page();
+		page.setRowTotal(courseDao.getCount());//获取课程表中总的数据条数
+		spu.getDataRows(page);//计算出总的页数
+		spu.getStartPage(page);
+		spu.bj(page);
+		//将页面信息存入值栈中
+		ActionContext acPage = ActionContext.getContext();
+		acPage.getSession().put("page", page);
+		return courseDao.getList(page);
+	}
+
+	/**
+	 * @category 根据条件获取总数
+	 * @param course 课程实体类
+	 * @return
+	 */
+	@Override
+	public int getCount() {
+		return courseDao.getCount();
 	}
 
 }

@@ -8,4 +8,21 @@
     <select id="selectAllCourseD" resultType="com.cjsf.wfma.bean.Course">
     	SELECT * FROM course LIMIT 10
     </select>
+    <select id="getCount" resultType="int">
+    	SELECT COUNT(*) FROM course
+    </select>
+    <select id="getList" parameterType="com.cjsf.wfma.bean.Page" resultType="com.cjsf.wfma.bean.Course">
+    	SELECT * FROM course LIMIT #{startRow},#{pageSize}
+    </select>
+    <!-- 
+    <resultMap type="com.cjsf.wfma.bean.Course" id="cour">
+    	<result property="courseid" column="courseid"/>
+    	<result property="coursename" column="coursename"/>
+    	<result property="courseimg" column="courseimg"/>
+    	<result property="courseexplain" column="courseexplain"/>
+    	<result property="coursedirectory" column="coursedirectory"/>
+    	<result property="coursestate" column="coursestate"/>
+    	<result property="courseurl" column="courseurl"/>
+    	<result property="coursetypeid" column="coursetypeid"/>
+    </resultMap> -->
 </mapper>

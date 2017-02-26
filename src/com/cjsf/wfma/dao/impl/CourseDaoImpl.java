@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cjsf.wfma.bean.Course;
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.dao.CourseDao;
 
 /**
@@ -20,7 +21,6 @@ public class CourseDaoImpl extends SqlSessionDaoSupport implements CourseDao {
 	@Autowired
 	@Override
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
-		// TODO Auto-generated method stub
 		super.setSqlSessionFactory(sqlSessionFactory);
 	}
 	/**
@@ -38,6 +38,23 @@ public class CourseDaoImpl extends SqlSessionDaoSupport implements CourseDao {
 	@Override
 	public List<Course> selectAllCourseD() {
 		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.CourseMapper.selectAllCourseD");
+	}
+	/**
+	 * @category 分页
+	 * @return
+	 */
+	@Override
+	public List<Course> getList(Page page) {
+		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.CourseMapper.getList",page);
+	}
+	/**
+	 * @category 根据条件获取总数
+	 * @param course
+	 * @return
+	 */
+	@Override
+	public int getCount() {
+		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.CourseMapper.getCount");
 	}
 
 }
