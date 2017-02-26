@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.Course;
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.service.CourseService;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author Administrator
@@ -15,10 +17,13 @@ import com.cjsf.wfma.service.CourseService;
  */
 @Controller("courseAction")
 @Scope("prototype")
-public class CourseAction {
+public class CourseAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	private List<Course> coursesList;//轮播课程
-	private List<Course> allCurse;//所有课程
+	private List<Course> allCurse;//所有课程、分页时保存课程
+	private Course course;
+	private Page page;//分页实体类
 	@Autowired
 	private CourseService courseService;
 	
@@ -41,6 +46,20 @@ public class CourseAction {
 	public void setAllCurse(List<Course> allCurse) {
 		this.allCurse = allCurse;
 	}
+	
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
+	public Page getPage() {
+		return page;
+	}
+	public void setPage(Page page) {
+		this.page = page;
+	}
 	/**
 	 * @category 查询轮播课程
 	 * @return
@@ -60,6 +79,19 @@ public class CourseAction {
 	public String selectAllCourseAction(){
 		allCurse = courseService.selectAllCourseS();
 		if(allCurse!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
+	/**
+	 * @category 分页查询
+	 * @return
+	 */
+	public String getListCourseAction(){
+		allCurse = courseService.getList();
+		if(allCurse != null){
 			return "success";
 		}else{
 			return "error";
