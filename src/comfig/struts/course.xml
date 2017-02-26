@@ -11,5 +11,8 @@
 		<action name="selectAllCourse" class="courseAction" method="selectAllCourseAction">
 			<result name="success">/WEB-INF/commonality/main.jsp</result>
 		</action>
+		<action name="kcDetails" class="courseAction" method="getListCourseAction">
+			<result name="success">/WEB-INF/course/kcDetails.jsp</result>
+		</action>
 	</package>
-</struts>    
+</struts>
