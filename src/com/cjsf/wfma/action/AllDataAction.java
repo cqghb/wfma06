@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import com.cjsf.wfma.bean.Navigation;
 import com.cjsf.wfma.service.NavigationService;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author Administrator
@@ -18,8 +19,9 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller("wfma")
 @Scope("prototype")
-public class AllDataAction {
+public class AllDataAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	private List<Navigation> navList;
 	@Autowired
 	private NavigationService NavigationService;

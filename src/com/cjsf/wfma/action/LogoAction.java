@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.Logo;
 import com.cjsf.wfma.service.LogoService;
+import com.opensymphony.xwork2.ActionSupport;
 
 
 /**
@@ -15,8 +16,9 @@ import com.cjsf.wfma.service.LogoService;
  */
 @Controller("logoAction")
 @Scope("prototype")
-public class LogoAction {
+public class LogoAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	private Logo logo;
 	private int naid;
 	@Autowired

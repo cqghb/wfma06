@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.WfInformation;
 import com.cjsf.wfma.service.WfInformationService;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author ws
@@ -15,8 +16,9 @@ import com.cjsf.wfma.service.WfInformationService;
  */
 @Controller("wfInformationAction")
 @Scope("prototype")
-public class WfInformationAction {
+public class WfInformationAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private WfInformationService wfInformationService;
 	private List<WfInformation> wfInformationList;

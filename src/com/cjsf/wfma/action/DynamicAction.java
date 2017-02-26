@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.Dynamic;
 import com.cjsf.wfma.service.DynamicService;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author ws
@@ -15,8 +16,9 @@ import com.cjsf.wfma.service.DynamicService;
  */
 @Controller("dynamicAction")
 @Scope("prototype")
-public class DynamicAction {
+public class DynamicAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private DynamicService dynamicService;
 	private List<Dynamic> dynamicList;

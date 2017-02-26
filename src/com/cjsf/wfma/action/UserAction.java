@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.User;
 import com.cjsf.wfma.service.UserService;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author Administrator
@@ -16,8 +17,9 @@ import com.cjsf.wfma.service.UserService;
  */
 @Controller("userAction")
 @Scope("prototype")
-public class UserAction {
+public class UserAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	private User user;//目前指定为校长
 	private List<User> jl;//教练
 	private List<User> newXY;//最新加入的10名学员信息
