@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel panel-primary ppp-wfjj">
 						<div class="panel-heading">
 							<span class="panel-title">教练</span>
-							<a href="#" class="gd">更多</a>
+							<a href="<%=basePath%>user/jlDetails.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
 							<table style="background-color: black;">
@@ -210,7 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<span class="panel-title">课程设置</span>
-							<a href="#" class="gd">更多</a>
+							<a href="<%=basePath%>course/kcDetails.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
 							<table style="background-color: black;">
