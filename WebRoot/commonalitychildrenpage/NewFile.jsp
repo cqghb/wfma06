@@ -12,6 +12,7 @@
 </head>
 <body>
 <div style="background-color: #ffffff;margin-top: 10%;">
+测试页面
 <font style="color:red;"><s:property value="user.nickname"/></font>
 </div>
 
