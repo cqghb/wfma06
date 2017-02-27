@@ -1,0 +1,3 @@
+# 让github忽略掉所有的Java编译文件
+
+*.class
