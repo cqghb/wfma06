@@ -210,7 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<span class="panel-title">课程设置</span>
-							<a href="<%=basePath%>course/kcDetails.action" class="gd">更多</a>
+							<a href="<%=basePath%>course/kcDetails.action?actionName=course/kcDetails.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
 							<table style="background-color: black;">
