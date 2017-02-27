@@ -19,25 +19,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		共有<s:property value="#session.page.pageTotal"/>页,
 		每页显示<s:property value="#session.page.pageSize"/>条,
 		<s:if test="#session.page.pageIndex > 1">
-			<a href="#">首页</a>
+			<a href="<%=basePath%><s:property value="actionName"/>?page.pageIndex=1&actionName=<s:property value="actionName"/>">首页</a>
 		</s:if>
 		<s:else>
 			首页
 		</s:else>
 		<s:if test="#session.page.pageIndex > 1">
-			<a href="#">上一页</a>
+			<a href="<%=basePath%><s:property value="actionName"/>?page.pageIndex=<s:property value="#session.page.pageIndex - 1"/>&actionName=<s:property value="actionName"/>">上一页</a>
 		</s:if>
 		<s:else>
 			上一页
 		</s:else>
 		<s:if test="#session.page.pageIndex < #session.page.pageTotal">
-			<a href="#">下一页</a>
+			<a href="<%=basePath%><s:property value="actionName"/>?page.pageIndex=<s:property value="#session.page.pageIndex + 1"/>&actionName=<s:property value="actionName"/>">下一页</a>
 		</s:if>
 		<s:else>
 			下一页
 		</s:else>
 		<s:if test="#session.page.pageIndex < #session.page.pageTotal">
-			<a href="#">尾页</a>
+			<a href="<%=basePath%><s:property value="actionName"/>?page.pageIndex=<s:property value="#session.page.pageTotal"/>&actionName=<s:property value="actionName"/>">尾页</a>
 		</s:if>
 		<s:else>
 			尾页
