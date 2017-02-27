@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.bean.User;
 import com.cjsf.wfma.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,11 +21,40 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	private User user;//目前指定为校长
+	private User user = new User();//目前指定为校长
 	private List<User> jl;//教练
 	private List<User> newXY;//最新加入的10名学员信息
+	private Page page = new Page();
+	private String actionName;//标记jsp分页中在点击上一页下一页首页尾页的时候请求的action是分页的action
+	
 	@Autowired
 	private UserService userService;
+	/**
+	 * @category 新学员分页
+	 * @return 返回成功或失败
+	 */
+	public String xyDetailsAction(){
+		newXY = userService.xyDetailsS(page);
+		if(newXY!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
+	/**
+	 * @category 教练分页
+	 * @return 返回成功或失败
+	 */
+	public String jlDetailsAction(){
+		jl = userService.jlDetailsS(page);
+		if(jl!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
 	/**
 	 * @author Administrator
 	 * @category 用户登录
@@ -104,6 +134,22 @@ public class UserAction extends ActionSupport {
 	}
 	public void setNewXY(List<User> newXY) {
 		this.newXY = newXY;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getActionName() {
+		return actionName;
+	}
+
+	public void setActionName(String actionName) {
+		this.actionName = actionName;
 	}
 	
 }

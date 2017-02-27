@@ -17,5 +17,11 @@
 		<action name="xzDetails" class="userAction" method="selectPresident">
 			<result name="success">/WEB-INF/user/xzInformetion.jsp</result>
 		</action>
+		<action name="jlDetails" class="userAction" method="jlDetailsAction">
+			<result name="success">/WEB-INF/user/jlInformetion.jsp</result>
+		</action>
+		<action name="xyDetails" class="userAction" method="xyDetailsAction">
+			<result name="success">/WEB-INF/user/xyInformetion.jsp</result>
+		</action>
 	</package>
 </struts>

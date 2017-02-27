@@ -7,6 +7,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.bean.User;
 import com.cjsf.wfma.dao.UserDao;
 
@@ -69,6 +70,40 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 	@Override
 	public List<User> selectNewXYD() {
 		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.UserMapper.selectNewXYD");
+	}
+	/**
+	 * @category 教练分页
+	 * @param page分页实体类
+	 * @return 返回一个教练数组
+	 */
+	@Override
+	public List<User> jlDetailsD(Page page) {
+		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.UserMapper.jlDetailsD", page);
+	}
+	/**
+	 * @category 查询教练的总数
+	 * @return 返回一个整型数字
+	 */
+	@Override
+	public int getJLCountD() {
+		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.UserMapper.getJLCountD");
+	}
+	/**
+	 * @category 学员分页
+	 * @param page分页实体类
+	 * @return 返回一个学员数组
+	 */
+	@Override
+	public List<User> xyDetailsD(Page page) {
+		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.UserMapper.xyDetailsD", page);
+	}
+	/**
+	 * @category 查询学员的总数
+	 * @return 返回一个整型数字
+	 */
+	@Override
+	public int getXYCountD() {
+		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.UserMapper.getXYCountD");
 	}
 
 }

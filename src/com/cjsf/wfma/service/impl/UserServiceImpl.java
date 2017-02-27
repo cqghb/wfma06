@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.bean.User;
 import com.cjsf.wfma.dao.UserDao;
 import com.cjsf.wfma.service.UserService;
+import com.cjsf.wfma.util.SearchPageUtil;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @author Administrator
@@ -19,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+	private SearchPageUtil spu = new SearchPageUtil();
 	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
@@ -66,6 +70,52 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> selectNewXYS() {
 		return userDao.selectNewXYD();
+	}
+	
+	/**
+	 * @category 教练分页
+	 * @param page分页实体类
+	 * @return 返回一个教练数组
+	 */
+	@Override
+	public List<User> jlDetailsS(Page page) {
+		page.setRowTotal(userDao.getJLCountD());//获取教练数据总条数
+		spu.getDataRows(page);//计算出总页数
+		spu.getStartPage(page);//设置起始行
+		ActionContext acKC = ActionContext.getContext();
+		acKC.getSession().put("page", page);//将分页信息存入 值栈中
+		return userDao.jlDetailsD(page);
+	}
+	
+	/**
+	 * @category 查询教练的总数 暂时不用
+	 * @return 返回一个整型数字
+	 */
+	@Override
+	public int getJLCountS() {
+		return userDao.getJLCountD();
+	}
+	/**
+	 * @category 学员分页
+	 * @param page分页实体类
+	 * @return 返回一个学员数组
+	 */
+	@Override
+	public List<User> xyDetailsS(Page page) {
+		page.setRowTotal(userDao.getXYCountD());//获取总的学员记录数
+		spu.getDataRows(page);//获取总页面数
+		spu.getStartPage(page);//获取起始行
+		ActionContext acXY = ActionContext.getContext();
+		acXY.getSession().put("page", page);//将分页信息存入值栈中
+		return userDao.xyDetailsD(page);
+	}
+	/**
+	 * @category 查询学员的总数 暂时不用
+	 * @return 返回一个整型数字
+	 */
+	@Override
+	public int getXYCountS() {
+		return userDao.getXYCountD();
 	}
 
 }
