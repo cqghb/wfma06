@@ -16,4 +16,16 @@
     <select id="selectNewXYD" resultType="com.cjsf.wfma.bean.User">
     	SELECT * FROM USER WHERE TYPE='学员' ORDER BY id DESC LIMIT 10
     </select>
+    <select id="getJLCountD" resultType="int">
+    	SELECT COUNT(*) FROM user WHERE TYPE='教练'
+    </select>
+    <select id="getXYCountD" resultType="int">
+    	SELECT COUNT(*) FROM user WHERE TYPE='学员'
+    </select>
+    <select id="jlDetailsD" parameterType="com.cjsf.wfma.bean.Page" resultType="com.cjsf.wfma.bean.User">
+    	SELECT * FROM USER  WHERE TYPE='教练' LIMIT #{startRow},#{pageSize}
+    </select>
+    <select id="xyDetailsD" parameterType="com.cjsf.wfma.bean.Page" resultType="com.cjsf.wfma.bean.User">
+    	SELECT * FROM USER  WHERE TYPE='学员' LIMIT #{startRow},#{pageSize}
+    </select>
 </mapper>
