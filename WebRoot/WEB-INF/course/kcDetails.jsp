@@ -24,6 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body>
 		<s:include value="../common/navgation.jsp"></s:include>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<table style="background-color: black;">
 			<tr>
 				<th>课程图片</th>
