@@ -4,5 +4,10 @@
     <select id="selectDynamicListD" parameterType="String" resultType="com.cjsf.wfma.bean.Dynamic">
         SELECT * FROM DYNAMIC  ORDER BY dytime DESC LIMIT 0, 6
     </select>
-    
+    <select id="getNewCount" resultType="int">
+    	SELECT COUNT(*) FROM DYNAMIC
+    </select>
+    <select id="newListD" parameterType="com.cjsf.wfma.bean.Page" resultType="com.cjsf.wfma.bean.Dynamic">
+    	SELECT * FROM DYNAMIC LIMIT #{startRow},#{pageSize}
+    </select>
 </mapper>

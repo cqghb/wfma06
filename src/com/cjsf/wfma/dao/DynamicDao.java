@@ -3,6 +3,7 @@ package com.cjsf.wfma.dao;
 import java.util.List;
 
 import com.cjsf.wfma.bean.Dynamic;
+import com.cjsf.wfma.bean.Page;
 
 /**
  * @author Administrator
@@ -15,4 +16,16 @@ public interface DynamicDao {
 	 * @return 返回部分新闻信息
 	 */
 	public List<Dynamic> selectDynamicListD();
+	
+	/**
+	 * @category 新闻分页
+	 * @param page 分页实体类
+	 * @return 返回一个新闻数组
+	 */
+	public List<Dynamic> newListD(Page page);
+	/**
+	 * @category 查询新闻记录条数
+	 * @return 返回新闻总条数
+	 */
+	public int getNewCount();
 }

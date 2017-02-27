@@ -10,5 +10,8 @@
 				<param name="actionName">selectAllCourse</param>
 			</result>
 		</action>
+		<action name="newList" class="dynamicAction" method="newListAction">
+			<result name="success">/WEB-INF/wfDynamic/newList.jsp</result>
+		</action>
 	</package>
 </struts>

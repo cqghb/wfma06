@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.Dynamic;
+import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.service.DynamicService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,6 +23,36 @@ public class DynamicAction extends ActionSupport {
 	@Autowired
 	private DynamicService dynamicService;
 	private List<Dynamic> dynamicList;
+	private Page page = new Page();
+	private String actionName;
+	
+	
+	/**
+	 * @category 新闻分页
+	 * @return 返回成功或者失败
+	 */
+	public String newListAction(){
+		dynamicList = dynamicService.newListS(page);
+		if(dynamicList!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
+	/***
+	 * @category 首页新闻信息查询
+	 * @return 成功success|失败error
+	 */
+	public String selectDynamicListA(){
+		dynamicList = dynamicService.selectDynamicListS();
+		if(dynamicList != null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
 	public DynamicService getDynamicService() {
 		return dynamicService;
 	}
@@ -35,16 +66,21 @@ public class DynamicAction extends ActionSupport {
 	public void setDynamicList(List<Dynamic> dynamicList) {
 		this.dynamicList = dynamicList;
 	}
-	/***
-	 * @category 首页新闻信息查询
-	 * @return 成功success|失败error
-	 */
-	public String selectDynamicListA(){
-		dynamicList = dynamicService.selectDynamicListS();
-		if(dynamicList != null){
-			return "success";
-		}else{
-			return "error";
-		}
+
+	public Page getPage() {
+		return page;
 	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getActionName() {
+		return actionName;
+	}
+
+	public void setActionName(String actionName) {
+		this.actionName = actionName;
+	}
+	
 }

@@ -177,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<span class="panel-title">万府新闻</span>
-							<a href="#" class="gd">更多</a>
+							<a href="<%=basePath%>wfDynamic/newList.action?actionName=wfDynamic/newList.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
 							<c:forEach items="${dynamicList }" var="dy" varStatus="status">
