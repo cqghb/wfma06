@@ -23,7 +23,8 @@ public class CourseAction extends ActionSupport {
 	private List<Course> coursesList;//轮播课程
 	private List<Course> allCurse;//所有课程、分页时保存课程
 	private Course course;
-	private Page page;//分页实体类
+	private Page page = new Page();//分页实体类
+	private String actionName;//标记jsp分页中在点击上一页下一页首页尾页的时候请求的action是课程分页的action
 	@Autowired
 	private CourseService courseService;
 	
@@ -60,6 +61,13 @@ public class CourseAction extends ActionSupport {
 	public void setPage(Page page) {
 		this.page = page;
 	}
+	
+	public String getActionName() {
+		return actionName;
+	}
+	public void setActionName(String actionName) {
+		this.actionName = actionName;
+	}
 	/**
 	 * @category 查询轮播课程
 	 * @return
@@ -90,7 +98,7 @@ public class CourseAction extends ActionSupport {
 	 * @return
 	 */
 	public String getListCourseAction(){
-		allCurse = courseService.getList();
+		allCurse = courseService.getList(page);
 		if(allCurse != null){
 			return "success";
 		}else{
