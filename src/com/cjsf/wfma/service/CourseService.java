@@ -3,6 +3,7 @@ package com.cjsf.wfma.service;
 import java.util.List;
 
 import com.cjsf.wfma.bean.Course;
+import com.cjsf.wfma.bean.Page;
 /**
  * @author Administrator
  * @category 课程业务处理接口
@@ -26,7 +27,7 @@ public interface CourseService {
 	 * @param page 页面实体类
 	 * @return
 	 */
-	public List<Course> getList();
+	public List<Course> getList(Page page);
 	
 	/**
 	 * @category 获取数据总条数

@@ -55,16 +55,17 @@ public class CourseServiceImpl implements CourseService {
 	 * @return
 	 */
 	@Override
-	public List<Course> getList() {
+	public List<Course> getList(Page page) {
 		SearchPageUtil spu = new SearchPageUtil();
-		Page page = new Page();
+		//Page page = new Page();
 		page.setRowTotal(courseDao.getCount());//获取课程表中总的数据条数
 		spu.getDataRows(page);//计算出总的页数
 		spu.getStartPage(page);
-		spu.bj(page);
+		//spu.bj(page);
 		//将页面信息存入值栈中
 		ActionContext acPage = ActionContext.getContext();
 		acPage.getSession().put("page", page);
+		System.out.println(page.toString());
 		return courseDao.getList(page);
 	}
 
