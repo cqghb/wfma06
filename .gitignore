@@ -1,4 +1,18 @@
 # 让github忽略掉所有的Java编译文件
 *.class
+
 # 忽略掉WEB-INF下面的classes文件夹中的所有文件
 classes/
+
+# 忽略掉日志文件
+*.log
+
+# 忽略掉其他文件
+*.ctxt
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.mtj.tmp/
