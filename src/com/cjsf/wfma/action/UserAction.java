@@ -29,6 +29,44 @@ public class UserAction extends ActionSupport {
 	
 	@Autowired
 	private UserService userService;
+	
+	/**
+	 * @category 这是导航“教练”要查询的教练信息
+	 * @return 返回教练列表视图或者异常视图
+	 */
+	public String jlAction(){
+		jl = userService.jlDetailsS(page);
+		if(jl!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	/**
+	 * @category 这是在“走进万府”要查询的校长信息
+	 * @return 返回成功或失败
+	 */
+	public String zjwfXZInfomationAction(){
+		user = userService.selectPresidentS();
+		if(user!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	/**
+	 * @category 这是在“走进万府”要查询的教练信息
+	 * @return 返回成功或失败
+	 */
+	public String zjwfJLlistAction(){
+		jl = userService.selectJLS();
+		if(jl!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
 	/**
 	 * @category 新学员分页
 	 * @return 返回成功或失败

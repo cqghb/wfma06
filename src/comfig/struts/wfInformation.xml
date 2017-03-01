@@ -10,8 +10,16 @@
 				<param name="actionName">dynamicAction</param>
 			</result>
 		</action>
+		<!-- 万府简介详细信息 -->
 		<action name="wfmajjgd" class="wfInformationAction" method="selectWfInformationA">
 			<result name="success">/WEB-INF/wf/profileDetails.jsp</result>
+		</action>
+		<!-- 走进万府 -->
+		<action name="zjwf" class="wfInformationAction" method="zjwfAction">
+			<result name="success" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">zjwfXZInfomation</param>
+			</result>
 		</action>
 	</package>
 	

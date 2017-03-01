@@ -5,13 +5,20 @@
 
 <struts>
 	<package name="course" namespace="/course" extends="struts-default">
+		<!-- 查询轮播课程 -->
 		<action name="courseAction" class="courseAction" method="selectByCourseStateAction">
 			<result name="success">/WEB-INF/commonality/main.jsp</result>
 		</action>
+		<!-- 查询所有的课程 -->
 		<action name="selectAllCourse" class="courseAction" method="selectAllCourseAction">
 			<result name="success">/WEB-INF/commonality/main.jsp</result>
 		</action>
+		<!-- 课程分页查询 -->
 		<action name="kcDetails" class="courseAction" method="getListCourseAction">
+			<result name="success">/WEB-INF/course/kcDetails.jsp</result>
+		</action>
+		<!-- 导航栏中课程查询 -->
+		<action name="kc" class="courseAction" method="kcAction">
 			<result name="success">/WEB-INF/course/kcDetails.jsp</result>
 		</action>
 	</package>

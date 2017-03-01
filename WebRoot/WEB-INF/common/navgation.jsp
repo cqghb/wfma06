@@ -36,7 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<s:iterator value="#session.NAVList" var="navi">
 					<%-- <s:if test="#navi.index==0"> --%>
 						<li role="presentation">
-		  					<a class="nav navdh" href="<s:property value="#navi.naurl"/>?naid=<s:property value="#navi.naid"/>">
+		  					<%-- <a class="nav navdh" href="<s:property value="#navi.naurl"/>&naid=<s:property value="#navi.naid"/>">
+		  						<s:property value="#navi.naname"/>
+		  					</a> --%>
+		  					<a class="nav navdh" href="<s:property value="#navi.naurl"/>">
 		  						<s:property value="#navi.naname"/>
 		  					</a>
 		  				</li>

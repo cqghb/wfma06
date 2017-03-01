@@ -26,6 +26,18 @@ public class DynamicAction extends ActionSupport {
 	private Page page = new Page();
 	private String actionName;
 	
+	/**
+	 * @category 这是导航"万府动态"查询的新闻列表
+	 * @return 返回成功或者失败
+	 */
+	public String wfdtAction(){
+		dynamicList = dynamicService.newListS(page);
+		if(dynamicList!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
 	
 	/**
 	 * @category 新闻分页

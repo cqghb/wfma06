@@ -4,13 +4,19 @@
 "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="wfDynamic" namespace="/wfDynamic" extends="struts-default">
+		<!-- 这是首页中新闻模块查询的那几条新闻 -->
 		<action name="dynamicAction" class="dynamicAction" method="selectDynamicListA">
 			<result name="success" type="chain">
 				<param name="namespace">/course</param>
 				<param name="actionName">selectAllCourse</param>
 			</result>
 		</action>
+		<!-- 这是首页中新闻模块"更多"查询的新闻列表 -->
 		<action name="newList" class="dynamicAction" method="newListAction">
+			<result name="success">/WEB-INF/wfDynamic/newList.jsp</result>
+		</action>
+		<!-- 这是导航"万府动态"查询的新闻列表 -->
+		<action name="wfdt" class="dynamicAction" method="wfdtAction">
 			<result name="success">/WEB-INF/wfDynamic/newList.jsp</result>
 		</action>
 	</package>

@@ -8,20 +8,39 @@
 		<action name="loginAction" class="userAction" method="Test">
 			<result name="success">/commonalitychildrenpage/NewFile.jsp</result>
 		</action>
+		<!-- 这是首页一次查询校长，学员，教练信息的 -->
 		<action name="selectPresident" class="userAction" method="selectPresident">
 			<result name="success" type="chain">
 				<param name="actionName">logoAction</param>
 				<param name="namespace">/logons</param>
 			</result>
 		</action>
+		<!-- 查询院长信息详细信息 -->
 		<action name="xzDetails" class="userAction" method="selectPresident">
 			<result name="success">/WEB-INF/user/xzInformetion.jsp</result>
 		</action>
+		<!-- 查询教练信息 -->
 		<action name="jlDetails" class="userAction" method="jlDetailsAction">
 			<result name="success">/WEB-INF/user/jlInformetion.jsp</result>
 		</action>
+		<!-- 查询学员信息 -->
 		<action name="xyDetails" class="userAction" method="xyDetailsAction">
 			<result name="success">/WEB-INF/user/xyInformetion.jsp</result>
+		</action>
+		<!-- 这是在“走进万府”要查询的校长信息 -->
+		<action name="zjwfXZInfomation" class="userAction" method="zjwfXZInfomationAction">
+			<result name="success" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">zjwfJLlist</param>
+			</result>
+		</action>
+		<!-- 这是在“走进万府”要查询的教练信息 -->
+		<action name="zjwfJLlist" class="userAction" method="zjwfJLlistAction">
+			<result name="success">/WEB-INF/wf/zjwf.jsp</result>
+		</action>
+		<!-- 这是导航“教练”要查询的教练信息 -->
+		<action name="jl" class="userAction" method="jlAction">
+			<result name="success">/WEB-INF/user/jlInformetion.jsp</result>
 		</action>
 	</package>
 </struts>

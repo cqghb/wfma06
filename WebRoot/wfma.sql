@@ -36,7 +36,7 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`courseid`,`coursename`,`courseimg`,`courseexplain`,`coursedirectory`,`coursestate`,`courseurl`,`coursetypeid`) values (1,'双节棍','images/course/a.jpg','这是课程说明','这是课程目录','轮播','#',1),(2,'双节棍','images/course/b.jpg','这是课程说明','这是课程目录','轮播','#',2);
+insert  into `course`(`courseid`,`coursename`,`courseimg`,`courseexplain`,`coursedirectory`,`coursestate`,`courseurl`,`coursetypeid`) values (1,'双节棍','images/course/a.jpg','这是课程说明1','这是课程目录','轮播','#',1),(2,'双节棍','images/course/b.jpg','这是课程说明2','这是课程目录','轮播','#',2);
 
 /*Table structure for table `coursetype` */
 
@@ -104,7 +104,7 @@ CREATE TABLE `navigation` (
 
 /*Data for the table `navigation` */
 
-insert  into `navigation`(`naid`,`naname`,`naurl`,`nastate`,`pid`) values (1,'首页','wfma.action','启用',0),(2,'走进万府','wfma.action','启用',0),(3,'万府动态','wfma.action','启用',0),(4,'课程','wfma.action','启用',0),(5,'教练','wfma.action','启用',0),(6,'联系我们','user/loginAction.action','启用',0);
+insert  into `navigation`(`naid`,`naname`,`naurl`,`nastate`,`pid`) values (1,'首页','wfma.action','启用',0),(2,'走进万府','wfinformation/zjwf.action','启用',0),(3,'万府动态','wfDynamic/wfdt.action?actionName=wfDynamic/newList.action','启用',0),(4,'课程','course/kc.action?actionName=course/kc.action','启用',0),(5,'教练','user/jl.action?actionName=user/jl.action','启用',0),(6,'联系我们','user/loginAction.action','启用',0);
 
 /*Table structure for table `photo` */
 

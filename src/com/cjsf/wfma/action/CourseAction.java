@@ -28,6 +28,55 @@ public class CourseAction extends ActionSupport {
 	@Autowired
 	private CourseService courseService;
 	
+	/**
+	 * @category 导航栏中课程查询
+	 * @return 返回课程列表视图或失败视图
+	 */
+	public String kcAction(){
+		allCurse = courseService.getList(page);
+		if(allCurse != null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	/**
+	 * @category 查询轮播课程
+	 * @return 返回主页视图或失败视图
+	 */
+	public String selectByCourseStateAction(){
+		coursesList = courseService.selectByCourseStateService();
+		if(coursesList != null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	/**
+	 * @category 查询所有的课程
+	 * @return 返回成功或失败
+	 */
+	public String selectAllCourseAction(){
+		allCurse = courseService.selectAllCourseS();
+		if(allCurse!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
+	/**
+	 * @category 分页查询
+	 * @return 返回课程列表视图或失败视图
+	 */
+	public String getListCourseAction(){
+		allCurse = courseService.getList(page);
+		if(allCurse != null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
 	public List<Course> getCoursesList() {
 		return coursesList;
 	}
@@ -68,42 +117,4 @@ public class CourseAction extends ActionSupport {
 	public void setActionName(String actionName) {
 		this.actionName = actionName;
 	}
-	/**
-	 * @category 查询轮播课程
-	 * @return
-	 */
-	public String selectByCourseStateAction(){
-		coursesList = courseService.selectByCourseStateService();
-		if(coursesList != null){
-			return "success";
-		}else{
-			return "error";
-		}
-	}
-	/**
-	 * @category 查询所有的课程
-	 * @return 返回课程集合
-	 */
-	public String selectAllCourseAction(){
-		allCurse = courseService.selectAllCourseS();
-		if(allCurse!=null){
-			return "success";
-		}else{
-			return "error";
-		}
-	}
-	
-	/**
-	 * @category 分页查询
-	 * @return
-	 */
-	public String getListCourseAction(){
-		allCurse = courseService.getList(page);
-		if(allCurse != null){
-			return "success";
-		}else{
-			return "error";
-		}
-	}
-	
 }

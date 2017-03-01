@@ -22,7 +22,36 @@ public class WfInformationAction extends ActionSupport {
 	@Autowired
 	private WfInformationService wfInformationService;
 	private List<WfInformation> wfInformationList;
-	private WfInformation wfInformation;
+	private WfInformation wfInformation = new WfInformation();
+	
+	
+	/**
+	 * @category 首页导航"走进万府"请求的action，为了查询万府简介信息
+	 * @return 返回成功或失败
+	 */
+	public String zjwfAction(){
+		wfInformation = wfInformationService.selectWfInformationS();
+		if(wfInformation != null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
+	
+	/**
+	 * @category 首页万府企业介绍信息查询
+	 * @return 成功success|失败error
+	 */
+	public String selectWfInformationA(){
+		wfInformation = wfInformationService.selectWfInformationS();
+		if(wfInformation != null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
 	public WfInformationService getWfInformationService() {
 		return wfInformationService;
 	}
@@ -42,17 +71,5 @@ public class WfInformationAction extends ActionSupport {
 	}
 	public void setWfInformation(WfInformation wfInformation) {
 		this.wfInformation = wfInformation;
-	}
-	/**
-	 * @category 首页万府企业介绍信息查询
-	 * @return 成功success|失败error
-	 */
-	public String selectWfInformationA(){
-		wfInformation = wfInformationService.selectWfInformationS();
-		if(wfInformation != null){
-			return "success";
-		}else{
-			return "error";
-		}
 	}
 }
