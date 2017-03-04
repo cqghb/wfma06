@@ -1,8 +1,8 @@
 # 让github忽略掉所有的Java编译文件
-*.class
+WebRoot/WEB-INF/classes/*.class
 
 # 忽略掉WEB-INF下面的classes文件夹中的所有文件
-classes/
+WebRoot/WEB-INF/classes/
 
 # 忽略掉日志文件
 *.log

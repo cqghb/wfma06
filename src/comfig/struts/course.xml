@@ -7,7 +7,10 @@
 	<package name="course" namespace="/course" extends="struts-default">
 		<!-- 查询轮播课程 -->
 		<action name="courseAction" class="courseAction" method="selectByCourseStateAction">
-			<result name="success">/WEB-INF/commonality/main.jsp</result>
+			<result name="success" type="chain">
+				<param name="namespace">/wfDynamic</param>
+				<param name="actionName">dynamicAction</param>
+			</result>
 		</action>
 		<!-- 查询所有的课程 -->
 		<action name="selectAllCourse" class="courseAction" method="selectAllCourseAction">

@@ -73,13 +73,111 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  			</li>
 			</ul>
 		</div>
-	</nav>
-	  --%>
+	</nav> --%>
+	 
 		<div class="main-content">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<div class="panel panel-primary ppp-wfjj">
+					<!-- 轮播课程 -->
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<c:forEach items="${coursesList }" var="cl" varStatus="csl">
+								<c:choose>
+									<c:when test="${csl.first}">
+										<li data-target="#carousel-example-generic" data-slide-to="${csl.index }" class="active"></li>
+									</c:when>
+									<c:otherwise>
+										<li data-target="#carousel-example-generic" data-slide-to="${csl.index }"></li>
+									</c:otherwise>
+								</c:choose>
+								<%-- <c:if test="${csl.first}">
+									<li data-target="#carousel-example-generic" data-slide-to="${csl.index }" class="active"></li>	
+								</c:if>
+								<c:else>
+									<li data-target="#carousel-example-generic" data-slide-to="${csl.index }"></li>
+								</c:else> --%>
+							</c:forEach>
+							<!-- <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
+						</ol>
+						
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							<%-- <s:iterator value="coursesList" status="c">
+								<s:if test="c.index==0">
+									<div class="item active">
+										<img src="<%=basePath%><s:property value="c.courseimg"/>" alt="<s:property value="c.coursename"/>"/>
+										<div class="carousel-caption">
+											<h3><s:property value="c.coursename"/></h3>
+											<p><s:property value="c.courseexplain"/></p>
+										</div>
+									</div>
+								</s:if>
+								<s:else>
+									<div class="item">
+										<img src="<%=basePath%><s:property value="c.courseimg"/>" alt="<s:property value="c.coursename"/>"/>
+										<div class="carousel-caption">
+											<h3><s:property value="c.coursename"/></h3>
+											<p><s:property value="c.courseexplain"/></p>
+										</div>
+									</div>
+								</s:else>
+							</s:iterator> --%>
+							<c:forEach items="${coursesList }" var="cl" varStatus="clnum">
+								<c:choose>
+									<c:when test="${clnum.first }">
+										<div class="item active">
+											<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
+											<div class="carousel-caption">
+												<h3>${cl.coursename}</h3>
+												<p>${cl.courseexplain}</p>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="item">
+											<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
+											<div class="carousel-caption">
+												<h3>${cl.coursename}</h3>
+												<p>${cl.courseexplain}</p>
+											</div>
+										</div>
+									</c:otherwise>
+								</c:choose>
+								<%-- <s:if test="${clnum.first }">
+									<div class="item active">
+										<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
+										<div class="carousel-caption">
+											<h3>${cl.coursename}</h3>
+											<p>${cl.courseexplain}</p>
+										</div>
+									</div>
+								</s:if>
+								<s:else>
+									<div class="item">
+										<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
+										<div class="carousel-caption">
+											<h3>${cl.coursename}</h3>
+											<p>${cl.courseexplain}</p>
+										</div>
+									</div>
+								</s:else> --%>
+							</c:forEach>
+						</div>
+						
+						<!-- Controls -->
+						<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+					<%-- <div class="panel panel-primary ppp-wfjj">
 						<div class="panel-heading">
 							<span class="panel-title">万府简介</span>
 							<a href="<%=basePath%>wfinformation/wfmajjgd.action" class="gd">更多</a>
@@ -171,7 +269,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</c:forEach>
 							</table>
 						</div>
-					</div>
+					</div> --%>
 				</div>
 				<div class="swiper-slide">
 					<div class="panel panel-primary">

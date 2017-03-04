@@ -29,6 +29,22 @@ public class AllDataAction extends ActionSupport {
 	/***
 	 * @author ws
 	 * @category 导航信息查询
+	 * @return 成功调用轮播课程查询的action，失败到异常的视图
+	 */
+	public String navigationAction(){
+		ActionContext ac = ActionContext.getContext();
+		navList = NavigationService.wfmaService();
+		ac.getSession().put("NAVList", navList);
+		if(navList!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
+	
+	/***
+	 * @author ws
+	 * @category 导航信息查询
 	 * @return 返回首页中导航信息
 	 */
 	public String wfma(){

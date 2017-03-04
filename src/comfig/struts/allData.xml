@@ -5,12 +5,19 @@
 
 <struts>
 	<package name="allData" namespace="/" extends="struts-default">
+		<!-- 首次请求的action(旧) -->
 		<action name="wfma" class="wfma" method="wfma">
 			<result name="success" type="chain">
 				<param name="actionName">selectPresident</param>
 				<param name="namespace">/user</param>
 			</result>
 		</action>
-		
+		<!-- 首次请求的action(新的) -->
+		<action name="navigation" class="wfma" method="navigationAction">
+			<result name="success" type="chain">
+				<param name="namespace">/course</param>
+				<param name="actionName">courseAction</param>
+			</result>
+		</action>
 	</package>
 </struts>    
