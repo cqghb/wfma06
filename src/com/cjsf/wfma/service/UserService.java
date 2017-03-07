@@ -13,7 +13,7 @@ import com.cjsf.wfma.bean.User;
 public interface UserService {
 
 	/**
-	 * @see 用户登录
+	 * @category 用户登录
 	 * @param u
 	 * @return User
 	 */
@@ -24,7 +24,7 @@ public interface UserService {
 	 */
 	public User TestS();
 	/**
-	 * 首页校长信息查询
+	 * @category 首页校长信息查询
 	 * @return
 	 */
 	public User selectPresidentS();

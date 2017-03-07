@@ -14,7 +14,7 @@ import com.cjsf.wfma.dao.UserDao;
 /**
  * @author Administrator
  * @version 1.0
- * @category用户业务数据处理实现类
+ * @category 用户业务数据处理实现类
  */
 @Repository("userDao")
 public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
@@ -42,14 +42,14 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.UserMapper.TestD");
 	}
 	/**
-	 * @category首页校长信息查询
+	 * @category 首页校长信息查询
 	 */
 	@Override
 	public User selectPresidentD() {
 		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.UserMapper.selectPresidentD");
 	}
 	/***
-	 * @category首页查询校长和教练信息
+	 * @category 首页查询校长和教练信息
 	 */
 	@Override
 	public List<Object> selectObjectD() {

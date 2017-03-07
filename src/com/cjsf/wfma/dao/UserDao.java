@@ -12,20 +12,20 @@ import com.cjsf.wfma.bean.User;
  */
 public interface UserDao {
 	/**
-	 * @category select uaer
+	 * @category select user
 	 */
 	public User login(User u);
 	/**
-	 * 测试导航点击效果
+	 * @category 测试导航点击效果
 	 * @return User
 	 */
 	public User TestD();
 	/**
-	 * 首页校长信息查询
+	 * @category 首页校长信息查询
 	 */
 	public User selectPresidentD();
 	/***
-	 * 首页查询校长和教练信息
+	 * @category 首页查询校长和教练信息
 	 * @return
 	 */
 	public List<Object> selectObjectD();
