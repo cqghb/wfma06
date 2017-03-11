@@ -22,7 +22,7 @@ public class CourseAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private List<Course> coursesList;//轮播课程
 	private List<Course> allCurse;//所有课程、分页时保存课程
-	private Course course;
+	private Course course = new Course();
 	private Page page = new Page();//分页实体类
 	private String actionName;//标记jsp分页中在点击上一页下一页首页尾页的时候请求的action是课程分页的action
 	@Autowired

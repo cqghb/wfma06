@@ -19,13 +19,13 @@ import com.opensymphony.xwork2.ActionContext;
 @Service("courseService")
 public class CourseServiceImpl implements CourseService {
 
+	private SearchPageUtil spu = new SearchPageUtil();
 	@Autowired
 	private CourseDao courseDao;
 	
 	public CourseDao getCourseDao() {
 		return courseDao;
 	}
-
 
 	public void setCourseDao(CourseDao courseDao) {
 		this.courseDao = courseDao;
@@ -56,7 +56,7 @@ public class CourseServiceImpl implements CourseService {
 	 */
 	@Override
 	public List<Course> getList(Page page) {
-		SearchPageUtil spu = new SearchPageUtil();
+		
 		page.setRowTotal(courseDao.getCount());//获取课程表中总的数据条数
 		spu.getDataRows(page);//计算出总的页数
 		spu.getStartPage(page);//设置起始行
@@ -75,5 +75,5 @@ public class CourseServiceImpl implements CourseService {
 	public int getCount() {
 		return courseDao.getCount();
 	}
-
+	
 }
