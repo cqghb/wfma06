@@ -4,9 +4,18 @@
 "http://struts.apache.org/dtds/struts-2.1.dtd">
 
 <struts>
-	<package name="user" namespace="/user" extends="struts-default">
-		<action name="loginAction" class="userAction" method="Test">
-			<result name="success">/commonalitychildrenpage/NewFile.jsp</result>
+	
+	<package name="user" namespace="/user" extends="json-default">
+		<!-- 管理员登录  -->
+		<action name="loginAction" class="userAction" method="login">
+			<!-- <result name="success">/commonalitychildrenpage/NewFile.jsp</result> -->
+			<result name="admin_success">/WEB-INF/admin/main/main.jsp</result>
+			<result name="admin_error">/WEB-INF/admin/error/admin_error.jsp</result>
+			<result name="teacher_success">/WEB-INF/admin/main/main.jsp</result>
+			<result name="teacher_error">/WEB-INF/admin/error/teacher_error.jsp</result>
+			<result name="student_success">/WEB-INF/commonality/main.jsp</result>
+			<result name="student_error">/WEB-INF/admin/error/student_error.jsp</result>
+			<result name="error">/WEB-INF/admin/error/error.jsp</result>
 		</action>
 		<!-- 这是首页一次查询校长，学员，教练信息的 -->
 		<action name="selectPresident" class="userAction" method="selectPresident">
@@ -43,4 +52,18 @@
 			<result name="success">/WEB-INF/user/jlInformetion.jsp</result>
 		</action>
 	</package>
+	<!-- <package name="user_login" namespace="/login_s" extends="json-default" abstract="true">
+		<interceptors>
+			<interceptor name="checkLogin" class="com.tarena.netctoss.interceptor.CheckLoginInterceptor"></interceptor>
+		</interceptors>
+		<action name="loginAction_T" class="userAction" method="login">
+			<result name="admin_success" type="json">/WEB-INF/admin/main/main.jsp</result>
+			<result name="admin_error">/WEB-INF/admin/error/admin_error.jsp</result>
+			<result name="teacher_success">/WEB-INF/admin/main/main.jsp</result>
+			<result name="teacher_error">/WEB-INF/admin/error/teacher_error.jsp</result>
+			<result name="student_success">/WEB-INF/commonality/main.jsp</result>
+			<result name="student_error">/WEB-INF/admin/error/student_error.jsp</result>
+			<result name="error">/WEB-INF/admin/error/error.jsp</result>
+		</action> 
+	</package>-->
 </struts>

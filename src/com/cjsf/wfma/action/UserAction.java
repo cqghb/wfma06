@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.bean.User;
 import com.cjsf.wfma.service.UserService;
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -99,8 +100,34 @@ public class UserAction extends ActionSupport {
 	 * @return success 
 	 */
 	public String login(){
-		user = userService.login(user);
-		return "success";
+		System.out.println(user);
+		//Gson gson = new Gson();
+		if(user.getType().equals("管理员") || user.getType()=="管理员"){//管理员登录
+			user = userService.login(user);
+			//HashMap<String, User> booksMap = gson.fromJson(result, new TypeToken<HashMap>String, User>() { }.getType());
+			//String U = gson.toJson(user);
+			if(user != null){
+				return "admin_success";
+			}else{
+				return "admin_error";
+			}
+		}else if(user.getType().equals("教练") || user.getType()=="教练"){//教练登录
+			user = userService.login(user);
+			if(user != null){
+				return "teacher_success";
+			}else{
+				return "teacher_error";
+			}
+		}else if(user.getType().equals("学员") || user.getType()=="学员"){//学员登录
+			user = userService.login(user);
+			if(user != null){
+				return "student_success";
+			}else{
+				return "student_error";
+			}
+		}else{//登录失败
+			return "error";
+		}
 	}
 	/***
 	 * 测试导航
