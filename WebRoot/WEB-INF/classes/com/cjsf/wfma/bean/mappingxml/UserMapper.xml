@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cjsf.wfma.bean.mappingxml.UserMapper">
     <select id="login" parameterType="String" resultType="com.cjsf.wfma.bean.User">
-        select * from user where nickname = #{nickname} and password = #{password}
+        select * from user where nickname = #{nickname} and password = #{password} and type= #{type}
     </select>
     <select id="TestD" parameterType="String" resultType="com.cjsf.wfma.bean.User">
         select * from user where nickname = '王胜' and password = '222222'
