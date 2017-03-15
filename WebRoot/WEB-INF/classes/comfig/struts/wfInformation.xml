@@ -22,5 +22,15 @@
 			</result>
 		</action>
 	</package>
-	
+	<!-- 后台相关的视图分发控制 -->
+	<package name="ht" namespace="/htwfifmt" extends="struts-default">
+		<!-- 后台点击万府信息管理跳转的页面 -->
+		<action name="wffmt" class="wfInformationAction" method="wffmtAction">
+			<result name="success">/WEB-INF/admin/wf/wfifmManager.jsp</result>
+		</action>
+		<!-- 后台点击查看万府信息跳转的页面 -->
+		<action name="selectWF" class="wfInformationAction" method="selectWFAction">
+			<result name="success">/WEB-INF/admin/wf/selectWFManager.jsp</result>
+		</action>
+	</package>
 </struts>
