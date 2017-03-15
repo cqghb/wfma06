@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 导航请求分发转发配置 -->
+	<package name="navigation" namespace="/navi" extends="struts-default">
+		<!-- 处理后台导航管理的请求 -->
+		<action name="naviMan" class="navigation" method="naviManAction">
+			<result name="success">/WEB-INF/admin/navigation/naviMan.jsp</result>
+		</action>
+		<!-- 处理后台查看导航信息的请求 -->
+		<action name="selectAllNavi" class="navigation" method="selectAllNaviAction">
+			<result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -52,18 +52,37 @@
 			<result name="success">/WEB-INF/user/jlInformetion.jsp</result>
 		</action>
 	</package>
-	<!-- <package name="user_login" namespace="/login_s" extends="json-default" abstract="true">
-		<interceptors>
-			<interceptor name="checkLogin" class="com.tarena.netctoss.interceptor.CheckLoginInterceptor"></interceptor>
-		</interceptors>
-		<action name="loginAction_T" class="userAction" method="login">
-			<result name="admin_success" type="json">/WEB-INF/admin/main/main.jsp</result>
-			<result name="admin_error">/WEB-INF/admin/error/admin_error.jsp</result>
-			<result name="teacher_success">/WEB-INF/admin/main/main.jsp</result>
-			<result name="teacher_error">/WEB-INF/admin/error/teacher_error.jsp</result>
-			<result name="student_success">/WEB-INF/commonality/main.jsp</result>
-			<result name="student_error">/WEB-INF/admin/error/student_error.jsp</result>
-			<result name="error">/WEB-INF/admin/error/error.jsp</result>
-		</action> 
-	</package>-->
+	<!-- 后台与学员有关的视图分发控制 -->
+	<package name="htUser" namespace="/htuser" extends="struts-default">
+		<!-- 点击学员管理跳转的视图 -->
+		<action name="userMan" class="userAction" method="userManAction">
+			<result name="success">/WEB-INF/admin/user/userMan.jsp</result>
+		</action>
+		<!-- 点击查看所有学员跳转的视图 -->
+		<action name="htSelectAllStu" class="userAction" method="htSelectAllStuAction">
+			<result name="success">/WEB-INF/admin/user/htSelectAllStu.jsp</result>
+		</action>
+	</package>
+	<!-- 后台与教练有关的视图分发控制 -->
+	<package name="htTeacher" namespace="/htteacher" extends="struts-default">
+		<!-- 点击教练管理跳转的视图  -->
+		<action name="teacherMan" class="userAction" method="teacherManAction">
+			<result name="success">/WEB-INF/admin/user/teacherMan.jsp</result>
+		</action>
+		<!-- 点击查看所有教练跳转的视图  -->
+		<action name="htSelectAllTea" class="userAction" method="htSelectAllTeaAction">
+			<result name="success">/WEB-INF/admin/user/htSelectAllTea.jsp</result>
+		</action>
+	</package>
+	<!-- 后台与管理员有关的视图分发控制 -->
+	<package name="htAdmin" extends="struts-default" namespace="/htadmin">
+		<!-- 点击个人(管理员)信息管理跳转的视图  -->
+		<action name="admininfMan" class="userAction" method="admininfManAction">
+			<result name="success">/WEB-INF/admin/user/admininfMan.jsp</result>
+		</action>
+		<!-- 点击查看个人(管理员)信息跳转的视图  -->
+		<action name="adminifm" class="userAction" method="adminifmAction">
+			<result name="success">/WEB-INF/admin/user/adminifm.jsp</result>
+		</action>
+	</package>
 </struts>

@@ -24,6 +24,20 @@ public class WfInformationAction extends ActionSupport {
 	private List<WfInformation> wfInformationList;
 	private WfInformation wfInformation = new WfInformation();
 	
+	/**
+	 * @category 后台点击查看万府信息跳转的页面
+	 * @return 
+	 */
+	public String selectWFAction(){
+		return "success";
+	}
+	/**
+	 * @category 后台点击万府信息管理跳转的页面
+	 * @return 
+	 */
+	public String wffmtAction(){
+		return "success";
+	}
 	
 	/**
 	 * @category 首页导航"走进万府"请求的action，为了查询万府简介信息

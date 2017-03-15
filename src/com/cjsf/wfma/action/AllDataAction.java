@@ -14,7 +14,6 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * @author Administrator
  * @category 控制类get首页数据
- * 
  */
 
 @Controller("wfma")

@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.1.dtd">
 
 <struts>
-	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.devMode" value="false"/>
  	<constant name="struts.objectFactory" value="spring"/>
  	<include file="comfig/struts/allData.xml"></include>
 	<include file="comfig/struts/user.xml"></include>
@@ -13,4 +13,9 @@
 	<include file="comfig/struts/wfInformation.xml"></include>
 	<include file="comfig/struts/wfDynamic.xml"></include>
 	<include file="comfig/struts/photo.xml"></include>
+	<!-- 后台主页面加载子页面 -->
+	<include file="comfig/struts/htmain.xml"></include>
+	<!-- 导航请求分发配置 -->
+	<include file="comfig/struts/navigation.xml"></include>
+	
 </struts>    

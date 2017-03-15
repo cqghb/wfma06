@@ -31,6 +31,55 @@ public class UserAction extends ActionSupport {
 	@Autowired
 	private UserService userService;
 	
+	
+	/**
+	 * @category 点击查看个人(管理员)信息跳转的视图
+	 * @return
+	 */
+	public String adminifmAction(){
+		
+		return "success";
+	}
+	/**
+	 * @category 点击个人(管理员)信息管理跳转的视图
+	 * @return
+	 */
+	public String admininfManAction(){
+		
+		return "success";
+	}
+	/**
+	 * @category 点击查看所有教练跳转的视图
+	 * @return
+	 */
+	public String htSelectAllTeaAction(){
+		return "success";
+	}
+	
+	/**
+	 * @category 点击教练管理跳转的视图 
+	 * @return
+	 */
+	public String teacherManAction(){
+		return "success";
+	}
+	
+	/**
+	 * @category 点击查看所有学员跳转的视图 
+	 * @return
+	 */
+	public String htSelectAllStuAction(){
+		return "success";
+	}
+	
+	/**
+	 * @category 点击学员管理跳转的视图
+	 * @return
+	 */
+	public String userManAction(){
+		return "success";
+	}
+	
 	/**
 	 * @category 这是导航“教练”要查询的教练信息
 	 * @return 返回教练列表视图或者异常视图

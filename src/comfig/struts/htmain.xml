@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="htmain" namespace="/htmain" extends="struts-default">
+		<action name="buttonjsp" class="Ht" method="buttonjspAction">
+			<result name="success">/WEB-INF/admin/common/south.jsp</result>
+		</action>
+		<action name="topjsp" class="Ht" method="topjspAction">
+			<result name="success">/WEB-INF/admin/common/north.jsp</result>
+		</action>
+		<action name="rightjsp" class="Ht" method="rightjspAction">
+			<result name="success">/WEB-INF/admin/common/east.jsp</result>
+		</action>
+		<action name="leftjsp" class="Ht" method="leftjspAction">
+			<result name="success">/WEB-INF/admin/common/west.jsp</result>
+		</action>
+		<action name="contentjsp" class="Ht" method="contentjspAction">
+			<result name="success">/WEB-INF/admin/common/center.jsp</result>
+		</action>
+	</package>
+</struts>
