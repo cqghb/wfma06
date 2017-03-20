@@ -80,13 +80,12 @@ CREATE TABLE `logo` (
   `logotarget` varchar(100) DEFAULT '#' COMMENT '链接地址',
   `logostate` varchar(10) DEFAULT '启用' COMMENT '状态[启用|弃用]',
   `naid` int(255) NOT NULL COMMENT '导航编号',
-  PRIMARY KEY (`logoid`),
-  KEY `FK_logo` (`naid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`logoid`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `logo` */
 
-insert  into `logo`(`logoid`,`logoname`,`logourl`,`logotarget`,`logostate`,`naid`) values (1,'logo1','images/logo.jpg','#','启用',1),(2,'logo2','images/logo.jpg','#','弃用',2),(3,'logo3','images/logo.jpg','#','弃用',3),(4,'logo4','images/logo.jpg','#','弃用',4),(5,'logo5','images/logo.jpg','#','弃用',5),(6,NULL,'images/logo.jpg','#','弃用',6);
+insert  into `logo`(`logoid`,`logoname`,`logourl`,`logotarget`,`logostate`,`naid`) values (1,'logo1','images/logo.jpg','#','启用',1),(2,'logo2','images/logo.jpg','#','弃用',2),(3,'logo3','images/logo.jpg','#','弃用',3),(4,'logo4','images/logo.jpg','#','弃用',4),(5,'logo5','images/logo.jpg','#','弃用',5),(6,'logo6','images/logo.jpg','#','弃用',6),(7,'7','#','#','启用',7);
 
 /*Table structure for table `navigation` */
 
@@ -98,13 +97,12 @@ CREATE TABLE `navigation` (
   `naurl` varchar(100) DEFAULT '#' COMMENT '链接地址',
   `nastate` varchar(20) NOT NULL DEFAULT '启用' COMMENT '是否启用 [启用|弃用]',
   `pid` int(255) DEFAULT NULL COMMENT '父节点编号',
-  PRIMARY KEY (`naid`),
-  CONSTRAINT `FK_navigation` FOREIGN KEY (`naid`) REFERENCES `logo` (`naid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`naid`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `navigation` */
 
-insert  into `navigation`(`naid`,`naname`,`naurl`,`nastate`,`pid`) values (1,'首页','wfma.action','启用',0),(2,'走进万府','wfinformation/zjwf.action','启用',0),(3,'万府动态','wfDynamic/wfdt.action?actionName=wfDynamic/newList.action','启用',0),(4,'课程','course/kc.action?actionName=course/kc.action','启用',0),(5,'教练','user/jl.action?actionName=user/jl.action','启用',0),(6,'联系我们','user/loginAction.action','启用',0);
+insert  into `navigation`(`naid`,`naname`,`naurl`,`nastate`,`pid`) values (1,'首页','navigation.action','启用',0),(2,'走进万府','wfinformation/zjwf.action','启用',0),(3,'万府动态','wfDynamic/wfdt.action?actionName=wfDynamic/newList.action','启用',0),(4,'课程','course/kc.action?actionName=course/kc.action','启用',0),(5,'教练','user/jl.action?actionName=user/jl.action','启用',0),(6,'联系我们','user/loginAction.action','启用',0),(10,'1','1','启用',1);
 
 /*Table structure for table `photo` */
 
@@ -122,7 +120,7 @@ CREATE TABLE `photo` (
 
 /*Data for the table `photo` */
 
-insert  into `photo`(`photoid`,`photourl`,`phototype`,`id`) values (1,'images/photo/ply_a.jpg','头像',1),(2,'images/photo/ply_b.jpg','非头像',1);
+insert  into `photo`(`photoid`,`photourl`,`phototype`,`id`) values (1,'images/photo/ply_a.jpg','头像',NULL),(2,'images/photo/ply_b.jpg','非头像',NULL);
 
 /*Table structure for table `user` */
 
