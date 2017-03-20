@@ -5,12 +5,38 @@
 <struts>
 	<!-- 导航请求分发转发配置 -->
 	<package name="navigation" namespace="/navi" extends="struts-default">
-		<!-- 处理后台导航管理的请求 -->
+		<!-- 处理后台导航管理的请求,暂时只是简单加载静态页面 -->
 		<action name="naviMan" class="navigation" method="naviManAction">
 			<result name="success">/WEB-INF/admin/navigation/naviMan.jsp</result>
 		</action>
 		<!-- 处理后台查看导航信息的请求 -->
 		<action name="selectAllNavi" class="navigation" method="selectAllNaviAction">
+			<result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result>
+		</action>
+		<!-- 处理分发后台添加导航信息的请求 -->
+		<action name="addNavi" class="navigation" method="addNaviAction">
+			<!-- <result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result> -->
+			<result name="success" type="chain">
+				<param name="namespace">/navi</param>
+				<param name="actionName">selectAllNavi</param>
+			</result>
+		</action>
+		<!-- 处理分发后台修改导航信息的请求 -->
+		<action name="editNavi" class="navigation" method="EditNaviAction">
+			<result name="success" type="chain">
+				<param name="namespace">/navi</param>
+				<param name="actionName">selectAllNavi</param>
+			</result>
+		</action>
+		<!-- 处理分发后台删除导航信息的请求searchNavi-->
+		<action name="removeNavi" class="navigation" method="RemoveNaviAction">
+			<result name="success" type="chain">
+				<param name="namespace">/navi</param>
+				<param name="actionName">selectAllNavi</param>
+			</result>
+		</action>
+		<!-- 处理分发后台查询导航信息的请求-->
+		<action name="searchNavi" class="navigation" method="SearchNaviAction">
 			<result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result>
 		</action>
 	</package>

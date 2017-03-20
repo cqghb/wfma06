@@ -28,5 +28,49 @@ public class NavigationServiceImpl implements NavigationService {
 	public List<Navigation> wfmaService() {
 		return NavigationDao.wfmaDao();
 	}
+	/**
+	 * @category 查询所有导航信息
+	 * @return 返回导航列表
+	 */
+	@Override
+	public List<Navigation> selectAllNaviS() {
+		return NavigationDao.selectAllNaviD();
+	}
+	/**
+	 * @category 添加导航信息
+	 * @param navi 导航对象
+	 * @return 添加成功放回真反之返回假
+	 */
+	@Override
+	public boolean AddNaivS(Navigation navi) {
+		return NavigationDao.AddNaivD(navi);
+	}
+	
+	/**
+	 * @category 处理分发后台修改导航信息的请求
+	 * @param navi
+	 * @return
+	 */
+	@Override
+	public boolean EditNaviS(Navigation navi) {
+		return NavigationDao.EditNaviD(navi);
+	}
+	/**
+	 * @category 处理后台删除导航信息的请求
+	 * @return
+	 */
+	@Override
+	public boolean RemoveNaviS(Navigation navi) {
+		return NavigationDao.RemoveNaviD(navi);
+	}
+	/**
+	 * @category 处理后台查询导航信息的请求
+	 * @param navi
+	 * @return
+	 */
+	@Override
+	public List<Navigation> SearchNaviS(Navigation navi) {
+		return NavigationDao.SearchNaviD(navi);
+	}
 
 }
