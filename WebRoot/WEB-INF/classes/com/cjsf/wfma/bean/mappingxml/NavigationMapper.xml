@@ -4,5 +4,32 @@
     <select id="selectNavigation" parameterType="String" resultType="com.cjsf.wfma.bean.Navigation">
         select * from navigation where nastate = '启用'
     </select>
+    <select id="selectAllNaviD" parameterType="com.cjsf.wfma.bean.Navigation" resultType="com.cjsf.wfma.bean.Navigation">
+    	select * from navigation
+    </select>
+    <insert id="AddNaivD" parameterType="com.cjsf.wfma.bean.Navigation" useGeneratedKeys="true" keyProperty="naid">
+    	INSERT INTO navigation (naname,naurl,nastate,pid) VALUES (#{naname},#{naurl},#{nastate},#{pid})
+    </insert>
+    <update id="EditNaviD" parameterType="com.cjsf.wfma.bean.Navigation">
+    	UPDATE navigation SET naname=#{naname},naurl=#{naurl},nastate=#{nastate},pid=#{pid} WHERE naid=#{naid}
+    </update>
+    <delete id="RemoveNaviD" parameterType="com.cjsf.wfma.bean.Navigation">
+    	DELETE FROM navigation WHERE naid=#{naid}
+    </delete>
     
+    <select id="SearchNaviD" parameterType="com.cjsf.wfma.bean.Navigation" resultType="com.cjsf.wfma.bean.Navigation">
+    	SELECT * FROM navigation where naname like CONCAT('%',#{naname},'%')
+    	<!-- <where>
+    		<if test="naname != null">
+    			naname like CONCAT('%',#{naname},'%')
+    		</if>
+    		<if test="nastate != null">
+    			or nastate=#{nastate}
+    		</if>
+    		<if test="pid != null">
+    			or pid=#{pid}
+    		</if>
+    	</where> -->
+    	
+    </select>
 </mapper>
