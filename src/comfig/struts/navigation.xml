@@ -13,9 +13,8 @@
 		<action name="selectAllNavi" class="navigation" method="selectAllNaviAction">
 			<result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result>
 		</action>
-		<!-- 处理分发后台添加导航信息的请求 -->
+		<!-- 处理分发后台添加导航信息的请求 --><!-- 带的参数  -->
 		<action name="addNavi" class="navigation" method="addNaviAction">
-			<!-- <result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result> -->
 			<result name="success" type="chain">
 				<param name="namespace">/navi</param>
 				<param name="actionName">selectAllNavi</param>

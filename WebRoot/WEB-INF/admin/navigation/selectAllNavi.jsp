@@ -128,11 +128,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 		</div>
 		<!-- 修改导航信息区  -- end -->
-		<s:debug></s:debug>
 		<script type="text/javascript">
 			$(function (){
 				$('#navAll').datagrid({
 					pageList: [2,4,6,8,10],
+					url: '<%=basePath%>navi/selectAllNavi',
 					pageSize: 2,
 					pageNumber: 1,
 					pagePosition: 'bottom',
@@ -192,16 +192,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$('#subNaviForm').form('submit',{
 					url: '<%=basePath%>navi/addNavi',
 					onSubmit: function (){
-						console.log('提交之前的回调函数');
+						//console.log('提交之前的回调函数');
 					},
 					success: function (d){
-						console.log('提交成功后的回调函数'+d);
+						//console.log('提交成功后的回调函数'+d);
 						$('#subNaviForm').form('clear');//清除表单信息
 						$('#add_navi_info').dialog({
 							title: '添加导航信息',
 							shadow: false,
 							closed: true
 					 	});
+						location.replace('<%=basePath%>navi/selectAllNavi');//再次去请求数据，来更新页面数据
 					}
 				});
 			});
@@ -235,37 +236,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$('#editSubNaviForm').form('submit',{
 					url: '<%=basePath%>navi/editNavi',
 					onSubmit: function (){
-						console.log('提交之前的回调函数');
+						//console.log('提交之前的回调函数');
 					},
 					success: function (d){
-						alert('提交成功后的回调函数'+d);
+						//alert('提交成功后的回调函数'+d);
 						$('#editSubNaviForm').form('clear');//清除表单信息
 						$('#edit_navi_info').dialog({
 							title: '添加导航信息',
 							shadow: false,
 							closed: true
 					 	});
-						<%-- $('#navAll').datagrid({
-							pageList: [2,4,6,8,10],
-							pageSize: 2,
-							pageNumber: 1,
-							pagePosition: 'bottom',
-							pagination: true,
-							loadMsg: '数据加载中.....',
-							fitColumns: true,
-							singleSelect: true,
-							striped: true,
-							rownumbers: true,
-							toolbar: '#toolbar',
-							url: '<%=basePath%>/navi/selectAllNavi' --%>
-							/* columns:[[  
-							          {field:'naid',title:'导航编号',width:100},    
-							          {field:'naname',title:'导航名称',width:100}, 
-							          {field:'naurl',title:'导航地址',width:100},
-							          {field:'nastate',title:'导航状态',width:100},   
-							          {field:'pid',title:'父节点编号',width:100,align:'right'}    
-							      ]]
-						}); */
+						location.replace('<%=basePath%>navi/selectAllNavi');//再次去请求数据，来更新页面数据
 					}
 				});
 			});
@@ -274,16 +255,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$('#editSubNaviForm').form('reset');
 			}); */
 			/* --修改窗口提交按钮动作 --end--  */
-			/* --修改窗口提交按钮动作 --start--  */
+			/* --删除窗口提交按钮动作 --start--  */
 			$('#remove_navi').linkbutton().bind('click',function(){
-				
 				//获取选中的数据
 				var row = $('#navAll').datagrid('getSelected');
 				confirm('确定要删除'+row.naname+'导航项目吗？');
 				$('#remove_navi').attr('href','navi/removeNavi?navi.naid='+row.naid);
 				
 			});
-			/* --修改窗口提交按钮动作 --end--  */
+			/* --删除窗口提交按钮动作 --end--  */
 			/* --查询导航信息--start--- */
 			$('#search_navi').linkbutton().bind('click',function (){
 				$('#search_navigation').form('submit',{

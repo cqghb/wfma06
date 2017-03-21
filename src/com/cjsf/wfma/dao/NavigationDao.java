@@ -1,5 +1,6 @@
 package com.cjsf.wfma.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.cjsf.wfma.bean.Navigation;
@@ -15,7 +16,7 @@ public interface NavigationDao {
 	 * @category 查询所有导航信息
 	 * @return 返回导航列表
 	 */
-	public List<Navigation> selectAllNaviD();
+	public List<Navigation> selectAllNaviD(HashMap<String,Object> params);
 	/**
 	 * @category 添加导航信息
 	 * @param navi 导航对象
@@ -39,5 +40,11 @@ public interface NavigationDao {
 	 * @return
 	 */
 	public List<Navigation> SearchNaviD(Navigation navi);
-
+	
+	/**
+	 * @category 根据条件返回符合条件的记录数
+	 * @param navi
+	 * @return
+	 */
+	public int getNaviRowsD(Navigation navi);
 }

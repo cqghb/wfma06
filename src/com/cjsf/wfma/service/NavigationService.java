@@ -16,7 +16,7 @@ public interface NavigationService {
 	 * @category 查询所有导航信息
 	 * @return 返回导航列表
 	 */
-	public List<Navigation> selectAllNaviS();
+	public List<Navigation> selectAllNaviS(int page,int rows,Navigation navi);
 	/**
 	 * @category 添加导航信息
 	 * @param navi 导航对象
@@ -40,4 +40,10 @@ public interface NavigationService {
 	 * @return
 	 */
 	public List<Navigation> SearchNaviS(Navigation navi);
+	/**
+	 * @category 根据条件返回符合条件的记录数
+	 * @param navi
+	 * @return
+	 */
+	public int getNaviRowsS(Navigation navi);
 }

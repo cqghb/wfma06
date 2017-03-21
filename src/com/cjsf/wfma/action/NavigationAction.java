@@ -1,6 +1,11 @@
 package com.cjsf.wfma.action;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -8,10 +13,8 @@ import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.Navigation;
 import com.cjsf.wfma.service.NavigationService;
-import com.cjsf.wfma.util.JsonOrBean;
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
-
-import net.sf.json.JSONObject;
 
 /**
  * @author Administrator
@@ -27,7 +30,10 @@ public class NavigationAction extends ActionSupport {
 	private List<Navigation> nav;
 	private Navigation navi = new Navigation();
 	//private Gson gson = new Gson();
-	private JsonOrBean jb = new JsonOrBean();
+	//private JsonOrBean jb = new JsonOrBean();
+	//private boolean t = false;//表示是否深入执行代码，如果这个有值，就表示是新增，修改数据执行之后为了不报404而特指定的action,没有其他作用
+	private int page=1;//当前页
+	private int rows=2;//每页显示的行数
 	
 	/**
 	 * @category 处理后台查询导航信息的请求
@@ -57,6 +63,7 @@ public class NavigationAction extends ActionSupport {
 	 * @return
 	 */
 	public String EditNaviAction(){
+		//t = true;
 		if(NavigationService.EditNaviS(navi)){
 			return "success";
 		}else{
@@ -70,6 +77,7 @@ public class NavigationAction extends ActionSupport {
 	 * @return
 	 */
 	public String addNaviAction(){
+		//t = true;
 		if(NavigationService.AddNaivS(navi)){
 			return "success";
 		}else{
@@ -81,15 +89,20 @@ public class NavigationAction extends ActionSupport {
 	 * @return
 	 */
 	public String selectAllNaviAction(){
-		nav = NavigationService.selectAllNaviS();
-		//HashMap<String,Navigation> navJson = gson.fromJson(result, new TypeToken<HashMap>String, Navigation>() { }.getType())；
-		//String navJson = jb.javaList2JsonList(nav);
+		System.out.println("---------------page"+page+"---------------------------rows"+rows);
+		nav = NavigationService.selectAllNaviS(page,rows,navi);
+		Map<String,Object> map = new HashMap<String,Object>();
+		System.out.println("===================================="+NavigationService.getNaviRowsS(navi));
+		map.put("total", NavigationService.getNaviRowsS(navi));
+		map.put("nav", nav);
+		Gson gson = new Gson();
+		gson.toJson(map);
+		System.out.println(gson.toJson(map));
 		if(nav != null){
 			return "success";
 		}else{
-			return "success";
+			return "error";
 		}
-		
 	}
 	/**
 	 * @category 处理后台导航管理的请求
@@ -117,5 +130,16 @@ public class NavigationAction extends ActionSupport {
 	public void setNavi(Navigation navi) {
 		this.navi = navi;
 	}
-	
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public int getRows() {
+		return rows;
+	}
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
 }

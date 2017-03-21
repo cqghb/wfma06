@@ -1,5 +1,6 @@
 package com.cjsf.wfma.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,13 @@ public class NavigationServiceImpl implements NavigationService {
 	 * @return 返回导航列表
 	 */
 	@Override
-	public List<Navigation> selectAllNaviS() {
-		return NavigationDao.selectAllNaviD();
+	public List<Navigation> selectAllNaviS(int page,int rows,Navigation navi) {
+		HashMap<String,Object> params = new HashMap<String,Object>();
+		params.put("page", (page-1)*rows);
+		params.put("rows", rows);
+		params.put("navi", navi);
+		System.out.println("params"+params);
+		return NavigationDao.selectAllNaviD(params);
 	}
 	/**
 	 * @category 添加导航信息
@@ -71,6 +77,15 @@ public class NavigationServiceImpl implements NavigationService {
 	@Override
 	public List<Navigation> SearchNaviS(Navigation navi) {
 		return NavigationDao.SearchNaviD(navi);
+	}
+	/**
+	 * @category 根据条件返回符合条件的记录数
+	 * @param navi
+	 * @return
+	 */
+	@Override
+	public int getNaviRowsS(Navigation navi) {
+		return NavigationDao.getNaviRowsD(navi);
 	}
 
 }

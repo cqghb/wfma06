@@ -1,5 +1,6 @@
 package com.cjsf.wfma.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -34,8 +35,8 @@ public class NavigationDaoImpl extends SqlSessionDaoSupport implements Navigatio
 	 * @return 返回导航列表
 	 */
 	@Override
-	public List<Navigation> selectAllNaviD() {
-		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.NavigationMapper.selectAllNaviD");
+	public List<Navigation> selectAllNaviD(HashMap<String,Object> params) {
+		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.NavigationMapper.selectAllNaviD",params);
 	}
 	/**
 	 * @category 添加导航信息
@@ -86,6 +87,16 @@ public class NavigationDaoImpl extends SqlSessionDaoSupport implements Navigatio
 	@Override
 	public List<Navigation> SearchNaviD(Navigation navi) {
 		return this.getSqlSession().selectList("com.cjsf.wfma.bean.mappingxml.NavigationMapper.SearchNaviD",navi);
+	}
+	/**
+	 * @category 根据条件返回符合条件的记录数
+	 * @param navi
+	 * @return
+	 */
+	@Override
+	public int getNaviRowsD(Navigation navi) {
+		//this.getSqlSession().selectl
+		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.NavigationMapper.getNaviRowsD", navi);
 	}
 
 }
