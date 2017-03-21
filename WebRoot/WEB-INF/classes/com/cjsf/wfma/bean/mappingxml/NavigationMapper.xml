@@ -4,8 +4,23 @@
     <select id="selectNavigation" parameterType="String" resultType="com.cjsf.wfma.bean.Navigation">
         select * from navigation where nastate = '启用'
     </select>
-    <select id="selectAllNaviD" parameterType="com.cjsf.wfma.bean.Navigation" resultType="com.cjsf.wfma.bean.Navigation">
+    <select id="selectAllNaviD" parameterType="map" resultType="com.cjsf.wfma.bean.Navigation">
     	select * from navigation
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    		<if test="naname != null and nastate != null and pid != null">
+    			naname like CONCAT('%',#{params.navi.naname},'%') AND nastate=#{params.navi.nastate} AND pid=#{params.navi.pid}
+    		</if>
+    		<if test="naname != null">
+    			naname like CONCAT('%',#{params.navi.naname},'%')
+    		</if>
+    		<if test="nastate != null">
+    			OR nastate=#{params.navi.nastate}
+    		</if>
+    		<if test="pid != null">
+    			OR pid=#{params.navi.pid}
+    		</if>
+    	</trim>
+    	LIMIT #{page},#{rows}
     </select>
     <insert id="AddNaivD" parameterType="com.cjsf.wfma.bean.Navigation" useGeneratedKeys="true" keyProperty="naid">
     	INSERT INTO navigation (naname,naurl,nastate,pid) VALUES (#{naname},#{naurl},#{nastate},#{pid})
@@ -31,5 +46,22 @@
     		</if>
     	</where> -->
     	
+    </select>
+    <select id="getNaviRowsD" parameterType="com.cjsf.wfma.bean.Navigation" resultType="int">
+    	SELECT COUNT(*) FROM navigation
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    		<if test="naname != null and nastate != null and pid != null">
+    			naname like CONCAT('%',#{naname},'%') AND nastate=#{nastate} AND pid=#{pid}
+    		</if>
+    		<if test="naname != null">
+    			naname like CONCAT('%',#{naname},'%')
+    		</if>
+    		<if test="nastate != null">
+    			OR nastate=#{nastate}
+    		</if>
+    		<if test="pid != null">
+    			OR pid=#{pid}
+    		</if>
+    	</trim>
     </select>
 </mapper>
