@@ -62,4 +62,40 @@ public interface UserDao {
 	 * @return 返回一个整型数字
 	 */
 	public int getXYCountD();
+	/**
+	 * @category 根据提供的用户信息查询用户所有信息
+	 * @param u 用户对象
+	 * @return 返回一个用户的所有信息
+	 */
+	public User adminifmD(User u);
+	/**
+	 * @category 处理修改用户信息事务请求
+	 * @param user 用户新的信息
+	 * @return 真或者假
+	 */
+	public boolean editUserD(User user);
+	/**
+	 * @category 根据用户类型查询所有学员
+	 * @param string 用户类型
+	 * @return 学员列表
+	 */
+	public List<User> HtSelectAllStuD(User user);
+	/**
+	 * @category 修改学员信息
+	 * @param user 新的学员信息
+	 * @return
+	 */
+	public boolean HtEditStuD(User user);
+	/**
+	 * @category 添加学员信息
+	 * @param user 学员信息参数
+	 * @return 返回成功与失败
+	 */
+	public boolean HtAddStuD(User user);
+	/**
+	 * @category 删除学员
+	 * @param user 学员编号信息
+	 * @return
+	 */
+	public boolean HtRemoveStuD(User user);
 }

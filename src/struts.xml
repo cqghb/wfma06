@@ -5,8 +5,8 @@
 
 <struts>
 	<constant name="struts.devMode" value="false"/>
- 	<constant name="struts.objectFactory" value="spring"/>
- 	<include file="comfig/struts/allData.xml"></include>
+	<constant name="struts.objectFactory" value="spring"/>
+	<include file="comfig/struts/allData.xml"></include>
 	<include file="comfig/struts/user.xml"></include>
 	<include file="comfig/struts/logo.xml"></include>
 	<include file="comfig/struts/course.xml"></include>
@@ -18,4 +18,4 @@
 	<!-- 导航请求分发配置 -->
 	<include file="comfig/struts/navigation.xml"></include>
 	
-</struts>    
+</struts>

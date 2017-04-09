@@ -1,11 +1,9 @@
 package com.cjsf.wfma.action;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -13,7 +11,12 @@ import org.springframework.stereotype.Controller;
 
 import com.cjsf.wfma.bean.Navigation;
 import com.cjsf.wfma.service.NavigationService;
+import com.cjsf.wfma.util.JsonOrBean;
 import com.google.gson.Gson;
+/*import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;*/
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -32,8 +35,9 @@ public class NavigationAction extends ActionSupport {
 	//private Gson gson = new Gson();
 	//private JsonOrBean jb = new JsonOrBean();
 	//private boolean t = false;//表示是否深入执行代码，如果这个有值，就表示是新增，修改数据执行之后为了不报404而特指定的action,没有其他作用
-	private int page=1;//当前页
-	private int rows=2;//每页显示的行数
+	private String json;//初始化一个保存json数据的变量
+	private int pageNumber=1;//当前页
+	private int pageSize=3;//每页显示的行数
 	
 	/**
 	 * @category 处理后台查询导航信息的请求
@@ -89,15 +93,18 @@ public class NavigationAction extends ActionSupport {
 	 * @return
 	 */
 	public String selectAllNaviAction(){
-		System.out.println("---------------page"+page+"---------------------------rows"+rows);
-		nav = NavigationService.selectAllNaviS(page,rows,navi);
+		System.out.println("---------------page"+pageNumber+"---------------------------rows"+pageSize);
+		nav = NavigationService.selectAllNaviS(pageNumber,pageSize,navi);
 		Map<String,Object> map = new HashMap<String,Object>();
 		System.out.println("===================================="+NavigationService.getNaviRowsS(navi));
 		map.put("total", NavigationService.getNaviRowsS(navi));
-		map.put("nav", nav);
+		map.put("rows", nav);
 		Gson gson = new Gson();
-		gson.toJson(map);
-		System.out.println(gson.toJson(map));
+		json = gson.toJson(map);
+		System.out.println(json);
+		//JsonOrBean.getList(json);
+		//JsonObject jsonObject =new JsonParser().parse(json).getAsJsonObject();
+		//System.out.println(jsonObject);
 		if(nav != null){
 			return "success";
 		}else{
@@ -130,16 +137,22 @@ public class NavigationAction extends ActionSupport {
 	public void setNavi(Navigation navi) {
 		this.navi = navi;
 	}
-	public int getPage() {
-		return page;
+	public int getPageNumber() {
+		return pageNumber;
 	}
-	public void setPage(int page) {
-		this.page = page;
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
 	}
-	public int getRows() {
-		return rows;
+	public int getPageSize() {
+		return pageSize;
 	}
-	public void setRows(int rows) {
-		this.rows = rows;
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public String getJson() {
+		return json;
+	}
+	public void setJson(String json) {
+		this.json = json;
 	}
 }

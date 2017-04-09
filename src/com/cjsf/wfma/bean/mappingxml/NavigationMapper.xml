@@ -8,16 +8,16 @@
     	select * from navigation
     	<trim prefix="WHERE" prefixOverrides="AND |OR ">
     		<if test="naname != null and nastate != null and pid != null">
-    			naname like CONCAT('%',#{params.navi.naname},'%') AND nastate=#{params.navi.nastate} AND pid=#{params.navi.pid}
+    			naname like CONCAT('%',#{navi.naname},'%') AND nastate=#{navi.nastate} AND pid=#{navi.pid}
     		</if>
     		<if test="naname != null">
-    			naname like CONCAT('%',#{params.navi.naname},'%')
+    			AND naname like CONCAT('%',#{navi.naname},'%')
     		</if>
     		<if test="nastate != null">
-    			OR nastate=#{params.navi.nastate}
+    			AND nastate=#{navi.nastate}
     		</if>
     		<if test="pid != null">
-    			OR pid=#{params.navi.pid}
+    			AND pid=#{navi.pid}
     		</if>
     	</trim>
     	LIMIT #{page},#{rows}
@@ -54,10 +54,10 @@
     			naname like CONCAT('%',#{naname},'%') AND nastate=#{nastate} AND pid=#{pid}
     		</if>
     		<if test="naname != null">
-    			naname like CONCAT('%',#{naname},'%')
+    			AND naname like CONCAT('%',#{naname},'%')
     		</if>
     		<if test="nastate != null">
-    			OR nastate=#{nastate}
+    			AND nastate=#{nastate}
     		</if>
     		<if test="pid != null">
     			OR pid=#{pid}

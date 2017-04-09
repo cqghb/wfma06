@@ -1,8 +1,13 @@
 package com.cjsf.wfma.util;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -15,6 +20,18 @@ import net.sf.json.JsonConfig;
  *
  */
 public class JsonOrBean {
+	
+	public static void getList(String json){
+		HttpServletResponse res=ServletActionContext.getResponse();
+		res.setContentType("text/html;charset=utf-8");
+		try {
+			res.getWriter().write(json);
+			res.flushBuffer(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * @category 简单类型：Json转化为bean
 	 * 

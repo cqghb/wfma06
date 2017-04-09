@@ -39,4 +39,9 @@
 			<result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result>
 		</action>
 	</package>
+	<package name="navi2" namespace="/navi2" extends="json-default">
+		<action name="selectAllNavi" class="navigation" method="selectAllNaviAction">
+			<result name="success">/WEB-INF/admin/navigation/selectAllNavi.jsp</result>
+		</action>
+	</package>
 </struts>
