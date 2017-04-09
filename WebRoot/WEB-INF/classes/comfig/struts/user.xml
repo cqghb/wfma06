@@ -59,8 +59,38 @@
 			<result name="success">/WEB-INF/admin/user/userMan.jsp</result>
 		</action>
 		<!-- 点击查看所有学员跳转的视图 -->
-		<action name="htSelectAllStu" class="userAction" method="htSelectAllStuAction">
+		<action name="htSelectAllStu" class="userAction" method="HtSelectAllStuAction">
 			<result name="success">/WEB-INF/admin/user/htSelectAllStu.jsp</result>
+		</action>
+		<!-- 分发处理添加学员的请求 -->
+		<action name="htAddStu" class="userAction" method="HtAddStuAction">
+			<result name="success" type="chain">
+				<param name="namespace">/htuser</param>
+				<param name="actionName">htSelectAllStu</param>
+			</result>
+			<param name="user.type">学员</param>
+		</action>
+		<!-- 分发处理修改学员的请求 -->
+		<action name="htEditStu" class="userAction" method="HtEditStuAction">
+			<result name="success" type="chain">
+				<param name="namespace">/htuser</param>
+				<param name="actionName">htSelectAllStu</param>
+			</result>
+		</action>
+		<!-- 分发处理删除学员的请求 -->
+		<action name="htRemoveStu" class="userAction" method="HtRemoveStuAction">
+			<result name="success" type="chain">
+				<param name="namespace">/htuser</param>
+				<param name="actionName">htSelectAllStu</param>
+			</result>
+			<param name="user.type">学员</param>
+		</action>
+		<!-- 分发处理查询学员的请求 -->
+		<action name="htSearchStu" class="userAction" method="HtSearchStuAction">
+			<result name="success" type="chain">
+				<param name="namespace">/htuser</param>
+				<param name="actionName">htSelectAllStu</param>
+			</result>
 		</action>
 	</package>
 	<!-- 后台与教练有关的视图分发控制 -->
@@ -75,10 +105,17 @@
 		</action>
 	</package>
 	<!-- 后台与管理员有关的视图分发控制 -->
-	<package name="htAdmin" extends="struts-default" namespace="/htadmin">
+	<package name="htAdmin" namespace="/htadmin" extends="struts-default">
 		<!-- 点击个人(管理员)信息管理跳转的视图  -->
 		<action name="admininfMan" class="userAction" method="admininfManAction">
 			<result name="success">/WEB-INF/admin/user/admininfMan.jsp</result>
+		</action>
+		<!-- 处理分发修改用户信息的请求 -->
+		<action name="editUser" class="userAction" method="EditUserAction">
+			<result name="success" type="chain">
+				<param name="namespace">/htadmin</param>
+				<param name="actionName">adminifm</param>
+			</result>
 		</action>
 		<!-- 点击查看个人(管理员)信息跳转的视图  -->
 		<action name="adminifm" class="userAction" method="adminifmAction">
