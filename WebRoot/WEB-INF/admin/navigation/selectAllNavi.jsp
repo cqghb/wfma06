@@ -67,6 +67,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- 查询部分--end -->
 		</div>
 		<!-- 工具栏区 -- end -->
+		
+		<!-- 分页面板--start -->
+		<!-- <div id="naviPagination"></div> -->
+		<!-- 分页面板--end -->
+		
 		<!-- 添加导航信息区 -- start -->
 		<div id="add_navi_info">
 			<form id="subNaviForm" method="post">
@@ -131,18 +136,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 			$(function (){
 				$('#navAll').datagrid({
-					pageList: [2,4,6,8,10],
 					url: '<%=basePath%>navi/selectAllNavi',
-					pageSize: 2,
-					pageNumber: 1,
-					pagePosition: 'bottom',
-					pagination: true,
 					loadMsg: '数据加载中.....',
 					fitColumns: true,
 					singleSelect: true,
 					striped: true,
 					rownumbers: true,
-					toolbar: '#toolbar'
+					toolbar: '#toolbar',
+					pagination: true,
+					selected: true,
+					pagePosition: 'bottom',
+					pageList: [3,6,9,12,15],
+					pageSize: 3,
+					pageNumber: 1,
+					onSelectPage: function (pageNumber, pageSize){
+						$(this).pagination('loading');// 把分页（pagination）变成正在加载（loaded）状态。
+						$('#navAll').datagrid({
+							url: '<%=basePath%>navi/selectAllNavi?pageNumber='+pageNumber+'&pageSize='+pageSize
+						});
+						//$('#naviPagination').panel('refresh', 'show_content.php?page='+pageNumber);
+						/* $(this).pagination('loaded');//把分页（pagination）变成加载完成（loaded）状态。
+						$(this).pagination('refresh',{//改变选项，并刷新分页栏信息
+							total: ,
+							pageNumber: pageNumber
+						}); */
+						//href: 'navi/selectAllNavi?pageNumber='+pageNumber+'&pageSize='+pageSize
+					}
+					
 				});
 				/* --初始化工具栏区 --start--  */
 				$('#add_navi').linkbutton({
@@ -171,13 +191,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 	});
 				
 			 	$('#editSubNavi').linkbutton({});
-			 	$('#editResNavi').linkbutton({});
 			 	/* --初始化修改窗口 --end--  */
 			 	/* 查询按钮初始化--start-- */
 				$('#search_navi').linkbutton({
 					iconCls: 'icon-search'
 				});
 			 	/* 查询按钮初始化--end-- */
+
+				/* 分页面板初始化--start-- */
+				$('#naviPagination').pagination({
+					total: 100,//总页数
+					pageSize: 3,//每页大小
+					pageNumber: 1,//首次加载时显示的页码
+					pageList: [3,6,9,12,15],
+					href: '<%=basePath%>navi/selectAllNavi?pageNumber=1&pageSize=3',
+					onSelectPage: function (pageNumber, pageSize){
+						$(this).pagination('loading');// 把分页（pagination）变成正在加载（loaded）状态。
+						$('#navAll').datagrid({
+							url: '<%=basePath%>navi/selectAllNavi?pageNumber='+pageNumber+'&pageSize='+pageSize
+						});
+						//$('#naviPagination').panel('refresh', 'show_content.php?page='+pageNumber);
+						$(this).pagination('loaded');//把分页（pagination）变成加载完成（loaded）状态。
+						$(this).pagination('refresh',{//改变选项，并刷新分页栏信息
+							//total: ,
+							pageNumber: pageNumber
+						});
+						//href: 'navi/selectAllNavi?pageNumber='+pageNumber+'&pageSize='+pageSize
+					}
+				});
+				/* 分页面板初始化--end-- */
 			});
 			/* --工具栏区相关按钮动作 --start--  */
 			$('#add_navi').bind('click', function(){    
@@ -250,10 +292,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 			});
-			//重置按钮处理代码
-			/* $('#editResNavi').linkbutton().bind('click',function(){
-				$('#editSubNaviForm').form('reset');
-			}); */
 			/* --修改窗口提交按钮动作 --end--  */
 			/* --删除窗口提交按钮动作 --start--  */
 			$('#remove_navi').linkbutton().bind('click',function(){

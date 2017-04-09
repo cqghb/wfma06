@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						id: 21,
 						text: "查看所有学员",
 						attributes: {
-							url: '<%=basePath%>htuser/htSelectAllStu'
+							url: '<%=basePath%>htuser/htSelectAllStu?user.type=学员'
 						}
 					}]
 				},{
