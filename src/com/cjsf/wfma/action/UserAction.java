@@ -43,7 +43,7 @@ public class UserAction extends ActionSupport {
 	 * @return 真或者假
 	 */
 	public String EditUserAction(){
-		System.out.println("usereidtusereidtusereidt---------------");
+		System.out.println("usereidtusereidtusereidt---------------"+user);
 		if(userService.editUserS(user)){
 			return "success";
 		}else{
@@ -98,8 +98,7 @@ public class UserAction extends ActionSupport {
 			return "success";
 		}else{
 			return "error";
-		}
-		
+		}	
 	}
 	/**
 	 * @category 处理添加学员的请求 
@@ -224,8 +223,6 @@ public class UserAction extends ActionSupport {
 		//Gson gson = new Gson();
 		if(user.getType().equals("管理员") || user.getType()=="管理员"){//管理员登录
 			user = userService.login(user);
-			//HashMap<String, User> booksMap = gson.fromJson(result, new TypeToken<HashMap>String, User>() { }.getType());
-			//String U = gson.toJson(user);
 			if(user != null){
 				ac.getSession().put("user", user);
 				return "admin_success";

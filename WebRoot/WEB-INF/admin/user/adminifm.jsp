@@ -60,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$('#edit_user').linkbutton().bind('click',function (){
 					//获取选中的数据
 					var row = $('#userView').datagrid('getSelected');
+					console.log(row);
 					//填充修改表单 数据
 					$('#update_user_form').form('load',{
 						'user.id': row.id,
@@ -161,59 +162,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form id="update_user_form" action="<%=basePath%>htadmin/editUser" method="post">
 				<div>
 					<label for="user.id">编号</label>
-					<input data-options="required:true,readonly:true,width:50,height:10" type="text" name="user.id" class="easyui-textbox"/>
+					<input data-options="required:true,readonly:true" type="text" name="user.id" class="easyui-textbox"/>
 				</div>
 				<div>
 					<label for="user.nickname">昵称</label>
-					<input data-options="required:true,prompt:'请输入昵称',width:50,height:10" type="text" name="user.nickname" class="easyui-textbox"/>
+					<input data-options="required:true,prompt:'请输入昵称'" type="text" name="user.nickname" class="easyui-textbox"/>
 				</div>
 				<div>
 					<label for="user.password">密码</label>
-					<input data-options="required:true,prompt:'请输入密码',width:50,height:10,showEye:true" type="password" name="user.password" class="easyui-passwordbox"/>
+					<input data-options="required:true,prompt:'请输入密码',showEye:true" type="password" name="user.password" class="easyui-passwordbox"/>
 				</div>
 				<!-- 客户端用来校验 -->
 				<div>
 					<label for="password2">请再输一次密码</label>
-					<input data-options="required:true,prompt:'请输入密码',width:50,height:10,showEye:true" type="password" name="password2" class="easyui-passwordbox"/>
+					<input data-options="required:true,prompt:'请输入密码',showEye:true" type="password" name="password2" class="easyui-passwordbox"/>
 				</div>
 				<div>
 					<label for="user.name">姓名</label>
-					<input data-options="required:true,prompt:'请输入姓名',width:50,height:10" type="text" name="user.name" class="easyui-textbox"/>
+					<input data-options="required:true,prompt:'请输入姓名'" type="text" name="user.name" class="easyui-textbox"/>
 				</div>
 				<div>
 					<label for="user.sex">性别</label>
-					<select class="easyui-combobox" name="user.sex" style="50px;">
+					<select class="easyui-combobox" name="user.sex" >
 						<option value="男">男</option>
 						<option value="女">女</option>
 					</select>
 				</div>
 				<div>
 					<label for="user.age">年龄</label>
-					<input data-options="required:true,prompt:'请输入年龄',width:50,height:10" type="text" name="user.age" class="easyui-numberbox"/>
+					<input data-options="required:true,prompt:'请输入年龄'" type="text" name="user.age" class="easyui-numberbox"/>
 				</div>
 				<div>
 					<label for="user.brithday">出生日期</label>
-					<input data-options="required:true,prompt:'请选择出生日期',width:50,height:10,min:3,max:200" type="text" name="user.brithday" class="easyui-textbox"/>
+					<input data-options="required:true,prompt:'请选择出生日期',min:3,max:200" type="text" name="user.brithday" class="easyui-textbox"/>
 				</div>
 				<div>
 					<label for="user.address">地址</label>
-					<input data-options="required:true,prompt:'请输入居住地址',width:50,height:10" type="text" name="user.address" class="easyui-textbox"/>
+					<input data-options="required:true,prompt:'请输入居住地址'" type="text" name="user.address" class="easyui-textbox"/>
 				</div>
 				<div>
 					<label for="user.tell">电话号码</label>
-					<input data-options="required:true,prompt:'请输入电话号码',width:50,height:10,validType:'minLength[11]'" type="text" name="user.tell" class="easyui-validatebox"/>
+					<input data-options="required:true,prompt:'请输入电话号码',validType:'minLength[11]'" type="text" name="user.tell" class="easyui-validatebox"/>
 				</div>
 				<div>
 					<label for="user.qq">QQ号码</label>
-					<input data-options="required:true,prompt:'请输入QQ号码',width:50,height:10,validType:'minLength[15]'" type="text" name="user.qq" class="easyui-validatebox"/>
+					<input data-options="required:true,prompt:'请输入QQ号码',validType:'minLength[15]'" type="text" name="user.qq" class="easyui-validatebox"/>
 				</div>
 				<div>
 					<label for="user.email">电子邮箱</label>
-					<input data-options="required:true,prompt:'请输入邮箱',width:50,height:10,validType:'email'" type="text" name="user.email" class="easyui-validatebox"/>
+					<input data-options="required:true,prompt:'请输入邮箱',validType:'email'" type="text" name="user.email" class="easyui-validatebox"/>
 				</div>
 				<div>
 					<label for="user.type">身份类型</label>
-					<select class="easyui-combobox" name="user.type" style="50px;">
+					<select class="easyui-combobox" name="user.type" >
 						<option value="管理员">管理员</option>
 						<option value="学员">学员</option>
 						<option value="教练">教练</option>
@@ -221,12 +222,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div>
 					<label for="user.briefintroduction">个人简介</label>
-					<textarea name="user.briefintroduction" class="easyui-validatebox" data-options="required:true,prompt:'请输入个人简介'" style="width: 50px; height: 60px;"></textarea>
+					<textarea name="user.briefintroduction" class="easyui-validatebox" data-options="required:true,prompt:'请输入个人简介'"></textarea>
 					
 				</div>
 				<div>
 					<label for="user.head">头像</label>
-					<input data-options="required:true,prompt:'请输入头像地址',width:50,height:10" type="text" name="user.head" class="easyui-textbox"/>
+					<input data-options="required:true,prompt:'请输入头像地址'" type="text" name="user.head" class="easyui-textbox"/>
 				</div>
 				<div>
 					<a id="submit_user_update">提交</a>

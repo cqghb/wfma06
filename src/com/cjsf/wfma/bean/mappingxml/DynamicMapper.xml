@@ -10,4 +10,12 @@
     <select id="newListD" parameterType="com.cjsf.wfma.bean.Page" resultType="com.cjsf.wfma.bean.Dynamic">
     	SELECT * FROM DYNAMIC LIMIT #{startRow},#{pageSize}
     </select>
+    <select id="DetailsDyD" parameterType="com.cjsf.wfma.bean.Dynamic" resultType="com.cjsf.wfma.bean.Dynamic">
+        SELECT * FROM DYNAMIC
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+    		<if test="dyid!=null">
+    			dyid=#{dyid}
+    		</if>
+    	</trim>
+    </select>
 </mapper>

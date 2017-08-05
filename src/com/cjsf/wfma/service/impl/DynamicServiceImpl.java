@@ -61,5 +61,14 @@ public class DynamicServiceImpl implements DynamicService {
 	public int getNewCountS() {
 		return dynamicDao.getNewCount();
 	}
+	/**
+	 * @category 根据新闻编号查询新闻详细信息
+	 * @param dynamic
+	 * @return  Dynamic
+	 */
+	@Override
+	public Dynamic DetailsDyS(Dynamic dynamic) {
+		return dynamicDao.DetailsDyD(dynamic);
+	}
 
 }

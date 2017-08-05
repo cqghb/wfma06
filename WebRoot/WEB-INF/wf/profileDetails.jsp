@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>万府武术简介详细页面</title>
 </head>
-<body>
+<body class="all">
 	<s:include value="../common/navgation.jsp"></s:include>
 	<h1>万府简介</h1>
 	<img class="wfimg" src="<%=basePath%>${wfInformation.wfimgurl}"/>

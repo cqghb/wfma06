@@ -71,19 +71,29 @@ a{
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-top: 7%;
+    margin-top: 6%;
 }
 
 .navbar-form {
     margin-top: 18px;
 }
-/**轮播图片高度样式**/
+/**轮播图片高度样式
 .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 25%;
 }
 
+**/
+/*轮播图片样式--start-*/
+.item > .lbkc{
+	width: 100%;
+	height: 100%;
+}
+.carousel-inner > .item > img{
+	height: 90%;
+}
+/*轮播图片样式--end-*/
 .swiper-container {
-	margin-top:7%;
+	/* margin-top:7%; */
     width: 100%;
     height: 100%;
     margin-left: auto;
@@ -131,3 +141,135 @@ a{
  	float:right;
  	clear: left;
  }
+ /*分屏样式--start--*/
+ .panel{
+ 	margin-top: 69px;
+ 	height: 100%;
+ }
+ /*分屏样式--end--*/
+ /*新闻列表式样*/
+ .xwList{
+ 	color:black;
+ 	/* border: 1px solid red; */
+ 	width: 100%;
+ 	height: 80%;
+ 	/* width: 1050px;
+ 	height: 530px; */
+ }
+ .one{
+ 	height: 20px;
+ 	border-bottom: 1px solid silver;
+ }
+ .two{
+ 	height: 20px;
+ 	border-bottom: 1px solid silver;
+ }
+ /*新闻详细信息页面样式*/
+ .DynamicDetilsBody, .CourseDetilsBody{
+ 	width: 100%;
+ 	height: 100%;
+ 	margin-top:70px;
+ 	overflow:hidden;
+ 	border: 1px solid red;
+ }
+ 
+ /* 标题 内容和配图*/
+ .nrpt{
+ 	width: 100%;
+ 	/* height: 10%; */
+ }
+ /*发布时间*/
+ .fbsj{
+ 	width: 100%;
+ 	float: right;
+ 	border-bottom: 1px solid white;
+ }
+ /*内容*/
+ .xwnr{
+ 	width: 70%;
+ 	height:100%;
+ 	float:left;
+ 	margin-top: 10px;
+ }
+ /*配图*/
+ .xwpt{
+ 	width: 30%;
+ 	/* height:260px; */
+ 	float:left;
+ 	margin-top: 10px;
+ }
+ /*首页课程列表样式*/
+ .courseTenList{
+ 	color: black;
+ }
+ /*课程盒子样式*/
+ .courseItem{
+ 	float: left;
+ 	border: 1px solid black;
+ 	margin-right: 20px;
+ 	margin-bottom:20px;
+ 	width: 18%;
+ 	height: 40%;
+ }
+ /*课程图片样式*/
+ .courseImage{
+ 	width: 100%;
+ 	height: 70%;
+ }
+ /*课程标题样式*/
+ .courseName{
+ 	width: 100%;
+ 	height: 10%;
+ }
+ /*课程解释样式*/
+ .courseExplain{
+ 	width: 100%;
+ 	height: 30%;
+ }
+ /*课程详细信息页面的相关样式--start--*/
+ /*课程图片样式*/
+ .CourseTop,.CourseDown{
+ 	overflow:hidden;
+ 	border-bottom: 1px solid white;
+ }
+ .CourseLeftUp{
+ 	width: 40%;
+ 	height: auto;
+ 	float: left;
+ }
+ .CourseTopBody{
+ 	width: 30%;
+ 	border: 1px solid white;
+ 	display: inline-block;
+ }
+ /*课程标题样式*/
+ .CourseLeftDown{
+ 	border-top: 1px solid white;
+ 	clear: left;
+ 	width: 100%;
+ }
+ /*课程说明样式*/
+ .CourseRight{
+ 	width: 70%;
+ 	height: auto;
+ 	float: right;
+ 	border: 1px solid white;
+ }
+ /*课程宣传视频样式*/
+ .CourseDownLeft{
+ 	width: 40%;
+ 	height: auto;
+ 	float: left;
+ }
+ 
+ .CourseDownright{
+ 	width: 70%;
+ 	height: auto;
+ 	float: right;
+ }
+ .videoList{
+ 	width: 20%;
+ 	/* height: 1%; */
+ }
+  /*课程详细信息页面的相关样式--end--*/
+ 

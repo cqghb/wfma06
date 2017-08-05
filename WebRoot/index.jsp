@@ -31,15 +31,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<div class="easyui-window" title="用户登录" data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,closable:false,draggable:false,resizable:false" style="width:500px;height:200px;padding:10px;">
+  	<div class="easyui-window" title="用户登录" 
+  		data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,closable:false,draggable:false,resizable:false" 
+  		style="width:500px;height:200px;padding:10px;">
 		<form id="userlogin" action="<%=basePath%>user/loginAction" method="post">
 	    	<div>
 	    		<labelb for="zh">账号</label>
-	    		<input id="zh" class="easyui-textbox" value="王胜的昵称" data-options="prompt:'请输入用户名',iconCls:'icon-man',iconAlign:'left'" type="text" name="user.nickname" />
+	    		<input id="zh" class="easyui-textbox" value="王胜的昵称" 
+	    		data-options="prompt:'请输入用户名',iconCls:'icon-man',iconAlign:'left'" type="text" name="user.nickname" />
 	    	</div>
 	    	<div>
 	    		<label for="mm">密码</label>
-	    		<input id="mm" class="easyui-textbox" value="222222" data-options="prompt:'请输入密码',iconCls:'icon-lock',iconAlign:'left'" type="password" name="user.password" />
+	    		<input id="mm" class="easyui-textbox" value="222222" 
+	    		data-options="prompt:'请输入密码',iconCls:'icon-lock',iconAlign:'left'" type="password" name="user.password" />
 	    	</div>
 	    	<div id="box">
 	    		<label for="sf">身份</label>
@@ -66,7 +70,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//下拉列表
 		$('#sf').combobox({	
 			panelAlign: 'left',
-			
 		});
 		//登录
 		$('#btn_submit').linkbutton().bind('click',function(){

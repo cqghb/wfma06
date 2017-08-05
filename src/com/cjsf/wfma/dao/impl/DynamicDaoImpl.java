@@ -49,5 +49,15 @@ public class DynamicDaoImpl extends SqlSessionDaoSupport implements DynamicDao {
 	public int getNewCount() {
 		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.DynamicMapper.getNewCount");
 	}
+	
+	/**
+	 * @category 根据新闻编号查询新闻详细信息
+	 * @param dynamic
+	 * @return  Dynamic
+	 */
+	@Override
+	public Dynamic DetailsDyD(Dynamic dynamic) {
+		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.DynamicMapper.DetailsDyD", dynamic);
+	}
 
 }

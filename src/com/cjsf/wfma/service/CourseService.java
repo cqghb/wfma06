@@ -34,4 +34,9 @@ public interface CourseService {
 	 * @return 返回数据总的条数
 	 */
 	public int getCount();
+	/**
+	 * @category 根据课程编号查询课程详细信息
+	 * @return
+	 */
+	public Course DetailsCourseBYIdS(Course course);
 }

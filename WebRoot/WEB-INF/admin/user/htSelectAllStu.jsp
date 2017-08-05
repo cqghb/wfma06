@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<!-- 添加学员信息区 -- start -->
 		<div id="add_stu_info">
-			<form id="add_stu_form" method="post">
+			<form id="add_stu_form" class="easyui-form" method="post">
 				<div>
 					<label for="nicknamestu">昵称</label>
 					<input id="nicknamestu" type="text" name="user.nickname" class="easyui-validatebox" data-options="required:true" placeholder="请输入昵称"/>
@@ -299,7 +299,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					fit: false
 			 	});
 				
-			 	$('#add_stu_form_submit').linkbutton({});
+			 	$('#add_stu_form_submit').linkbutton({
+			 		iconCls: 'icon-save'
+			 	});
 			 	$('#add_stu_form_reset').linkbutton({});
 				/* --初始化添加窗口 --end--  */
 				/* --初始化修改窗口 --start--  */
@@ -322,9 +324,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			/* --添加窗口提交按钮动作 --start--  */
 			$('#add_stu_form_submit').bind('click',function(){
+				
 				$('#add_stu_form').form('submit',{
 					url: '<%=basePath%>htuser/htAddStu',
 					onSubmit: function (){
+						//return $(this).form('enableValidation').form('validate');
 					},
 					success: function (d){
 						$('#add_stu_form').form('clear');//清除表单信息
@@ -341,6 +345,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			/* --添加窗口重置按钮动作 --end--  */
 			/* --修改窗口提交按钮动作 --start--  */
 			$('#edit_stu').bind('click',function (){
+				//获取选中的数据
+				var row = $('#stuAll').datagrid('getSelected');
+				/* if(row['id']==null){
+					alert('请选择要修改的学员');
+					return false;
+				}else{
+					alert('请');
+				} */
 				//打开修改学员信息的面板
 				$('#edit_stu_info').panel({
 					closed: false,
@@ -348,8 +360,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   	 	fit: true,
 			   	 	inline: false
 				});
-				//获取选中的数据
-				var row = $('#stuAll').datagrid('getSelected');
+				
 				//将获取的数据填充到form表单中
 				$('#edit_stu_info_form').form('load',{
 					'user.id': row['id'],

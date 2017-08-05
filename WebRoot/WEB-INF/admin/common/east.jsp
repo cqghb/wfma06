@@ -22,7 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 	</head>
 	<body>
-		小插件
+		<h3>日历</h3>
+		<div class="easyui-calendar" style="width:250px;height:250px;"></div>
 	</body>
 	
 </html>

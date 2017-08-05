@@ -8,8 +8,6 @@ import java.util.Date;
  * 用户实体类
  */
 public class User {
-
-	//id nickname PASSWORD NAME sex age brithday address tell qq email type
 	private int id;//编号
 	private String nickname;//昵称
 	private String password;//密码

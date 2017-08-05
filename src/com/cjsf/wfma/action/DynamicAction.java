@@ -22,9 +22,26 @@ public class DynamicAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	@Autowired
 	private DynamicService dynamicService;
+	
+	private Dynamic dynamic = new Dynamic();
 	private List<Dynamic> dynamicList;
 	private Page page = new Page();
 	private String actionName;
+	
+	/**
+	 * @category 根据新闻编号查询新闻详细信息
+	 * @return
+	 */
+	public String DetailsDyAction(){
+		System.out.println("新闻的编号"+dynamic.getDyid());
+		dynamic = dynamicService.DetailsDyS(dynamic);
+		if(dynamic!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+		
+	}
 	
 	/**
 	 * @category 这是导航"万府动态"查询的新闻列表
@@ -93,6 +110,14 @@ public class DynamicAction extends ActionSupport {
 
 	public void setActionName(String actionName) {
 		this.actionName = actionName;
+	}
+
+	public Dynamic getDynamic() {
+		return dynamic;
+	}
+
+	public void setDynamic(Dynamic dynamic) {
+		this.dynamic = dynamic;
 	}
 	
 }

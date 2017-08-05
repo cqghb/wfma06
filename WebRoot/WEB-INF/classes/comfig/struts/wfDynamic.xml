@@ -19,5 +19,9 @@
 		<action name="wfdt" class="dynamicAction" method="wfdtAction">
 			<result name="success">/WEB-INF/wfDynamic/newList.jsp</result>
 		</action>
+		<!-- 根据编号查询新闻详细信息 -->
+		<action name="detailsDy" class="dynamicAction" method="DetailsDyAction">
+			<result name="success">/WEB-INF/wfDynamic/DetilsDynamic.jsp</result>
+		</action>
 	</package>
 </struts>

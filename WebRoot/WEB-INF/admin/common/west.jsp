@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					},
 					children: [{
 						id: 21,
-						text: "查看所有学员",
+						text: "查看学员列表",
 						attributes: {
 							url: '<%=basePath%>htuser/htSelectAllStu?user.type=学员'
 						}
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					},
 					children: [{
 						id: 31,
-						text: "查看所有教练",
+						text: "查看教练列表",
 						attributes: {
 							url: '<%=basePath%>htteacher/htSelectAllTea'
 						}
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					},
 					children: [{
 						id: 41,
-						text: "查看导航信息",
+						text: "查看导航列表",
 						attributes: {
 							url: '<%=basePath%>navi/selectAllNavi'
 						}
@@ -89,6 +89,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						text: "查看个人信息",
 						attributes: {
 							url: '<%=basePath%>htadmin/adminifm'
+						}
+					}]
+				},{
+					id: 4,
+					animate: true,
+					text: "课程管理",
+					attributes: {
+						url: '<%=basePath%>navi/naviMan'
+					},
+					children: [{
+						id: 41,
+						text: "查看课程列表",
+						attributes: {
+							url: '<%=basePath%>navi/selectAllNavi'
 						}
 					}]
 				}];   

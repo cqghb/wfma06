@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+/**后台通用css样式**/
+/*登陆者信息显示的位置*/
+.userws 
+{
+	float: right;
+}

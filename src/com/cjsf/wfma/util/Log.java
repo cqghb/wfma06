@@ -6,7 +6,7 @@ import org.springframework.aop.AfterReturningAdvice;
 
 /**
  * @author Administrator
- * 日子记录(后置通知)
+ * 日志记录(后置通知)
  */
 public class Log implements AfterReturningAdvice{
 

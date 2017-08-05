@@ -28,4 +28,11 @@ public interface DynamicDao {
 	 * @return 返回新闻总条数
 	 */
 	public int getNewCount();
+	
+	/**
+	 * @category 根据新闻编号查询新闻详细信息
+	 * @param dynamic
+	 * @return  Dynamic
+	 */
+	public Dynamic DetailsDyD(Dynamic dynamic);
 }

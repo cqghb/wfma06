@@ -21,9 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
 	</head>
-	<body>
+	<body class="all">
 		<s:include value="../common/navgation.jsp"></s:include>
-		<br/><br/><br/><br/><br/><br/><br/><br/>
 		<h3>学员列表</h3>
 		<table style="background-color: black;">
 			<tr>
@@ -43,7 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 			</c:forEach>
 		</table>
-		
 		<s:include value="../common/page.jsp"></s:include>
 	</body>
 </html>

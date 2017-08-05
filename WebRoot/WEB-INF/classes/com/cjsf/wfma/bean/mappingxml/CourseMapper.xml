@@ -14,6 +14,15 @@
     <select id="getList" parameterType="com.cjsf.wfma.bean.Page" resultType="com.cjsf.wfma.bean.Course">
     	SELECT * FROM course LIMIT #{startRow},#{pageSize}
     </select>
+    <select id="DetailsCourseBYIdD" parameterType="com.cjsf.wfma.bean.Course" resultType="com.cjsf.wfma.bean.Course">
+    	SELECT * FROM course
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    		<if test="courseid!=null">
+    			courseid = #{courseid}
+    		</if>
+    	</trim>
+    </select>
+    
     <!-- 
     <resultMap type="com.cjsf.wfma.bean.Course" id="cour">
     	<result property="courseid" column="courseid"/>
@@ -24,5 +33,6 @@
     	<result property="coursestate" column="coursestate"/>
     	<result property="courseurl" column="courseurl"/>
     	<result property="coursetypeid" column="coursetypeid"/>
+    	<result property="videourl" column="videourl"/>
     </resultMap> -->
 </mapper>

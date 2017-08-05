@@ -24,5 +24,9 @@
 		<action name="kc" class="courseAction" method="kcAction">
 			<result name="success">/WEB-INF/course/kcDetails.jsp</result>
 		</action>
+		<!-- 根据课程编号查询课程详细信息 -->
+		<action name="DetailsCourseBYId" class="courseAction" method="DetailsCourseBYId">
+			<result name="success">/WEB-INF/course/DetailsCourse.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>校长详细信息页面</title>
 </head>
-<body>
+<body class="all">
 	<s:include value="../common/navgation.jsp"></s:include>
 	<h1>校长详细信息</h1>
 	<img alt="校长头像" src="<%=basePath%><s:property value="user.head"/>" height="200px" width="100px"/>

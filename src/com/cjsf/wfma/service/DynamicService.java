@@ -27,4 +27,10 @@ public interface DynamicService {
 	 * @return 返回新闻总条数
 	 */
 	public int getNewCountS();
+	/**
+	 * @category 根据新闻编号查询新闻详细信息
+	 * @param dynamic
+	 * @return  Dynamic
+	 */
+	public Dynamic DetailsDyS(Dynamic dynamic);
 }

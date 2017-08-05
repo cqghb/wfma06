@@ -76,4 +76,13 @@ public class CourseServiceImpl implements CourseService {
 		return courseDao.getCount();
 	}
 	
+	/**
+	 * @category 根据课程编号查询课程详细信息
+	 * @return
+	 */
+	@Override
+	public Course DetailsCourseBYIdS(Course course) {
+		return courseDao.DetailsCourseBYIdD(course);
+	}
+	
 }

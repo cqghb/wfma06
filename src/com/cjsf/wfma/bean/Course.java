@@ -14,9 +14,10 @@ public class Course {
 	private String coursestate;//课程状态[轮播 非轮播]
 	private String courseurl;//课程链接地址
 	private int coursetypeid;//课程类别编号
+	private String videourl;//课程宣传视频地址
 	public Course(){}
 	
-	public Course(int courseid,String coursename,String courseimg,String courseexplain,String coursedirectory,String coursestate,String courseurl,int coursetypeid){
+	public Course(int courseid,String coursename,String courseimg,String courseexplain,String coursedirectory,String coursestate,String courseurl,int coursetypeid,String videourl){
 		this.courseid = courseid;
 		this.coursename = coursename;
 		this.courseimg = courseimg;
@@ -25,6 +26,7 @@ public class Course {
 		this.coursestate = coursestate;
 		this.courseurl = courseurl;
 		this.coursetypeid = coursetypeid;
+		this.videourl = videourl;
 	}
 
 	public int getCourseid() {
@@ -47,9 +49,10 @@ public class Course {
 		return courseimg;
 	}
 
-	public void setCourseimgimg(String courseimg) {
+	public void setCourseimg(String courseimg) {
 		this.courseimg = courseimg;
 	}
+
 
 	public String getCourseexplain() {
 		return courseexplain;
@@ -90,12 +93,20 @@ public class Course {
 	public void setCoursetypeid(int coursetypeid) {
 		this.coursetypeid = coursetypeid;
 	}
+	
+	public String getVideourl() {
+		return videourl;
+	}
+
+	public void setVideourl(String videourl) {
+		this.videourl = videourl;
+	}
 
 	@Override
 	public String toString() {
 		return "Course [courseid=" + courseid + ", coursename=" + coursename + ", courseimg=" + courseimg
 				+ ", courseexplain=" + courseexplain + ", coursedirectory=" + coursedirectory + ", coursestate="
-				+ coursestate + ", courseurl=" + courseurl +",coursetypeid="+coursetypeid+"]";
+				+ coursestate + ", courseurl=" + courseurl + ", coursetypeid=" + coursetypeid + ", videourl=" + videourl
+				+ "]";
 	}
-	
 }

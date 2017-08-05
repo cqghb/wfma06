@@ -28,6 +28,19 @@ public class CourseAction extends ActionSupport {
 	@Autowired
 	private CourseService courseService;
 	
+	
+	/**
+	 * @category 根据课程编号查询课程详细信息
+	 * @return
+	 */
+	public String DetailsCourseBYId(){
+		course = courseService.DetailsCourseBYIdS(course);
+		if(course!=null){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
 	/**
 	 * @category 导航栏中课程查询
 	 * @return 返回课程列表视图或失败视图

@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
 	</head>
-	<body>
+	<body class="all">
 		<s:include value="../common/navgation.jsp"></s:include>
 		<br/><br/><br/><br/><br/><br/><br/><br/>
 		<h3>新闻列表</h3>

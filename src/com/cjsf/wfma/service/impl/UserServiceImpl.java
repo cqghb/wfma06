@@ -141,8 +141,9 @@ public class UserServiceImpl implements UserService {
 	 * @param string 用户类型
 	 * @return 学员列表
 	 */
-	@Override
+	//@Override
 	public List<User> HtSelectAllStuS(User user) {
+		
 		return userDao.HtSelectAllStuD(user);
 	}
 	/**

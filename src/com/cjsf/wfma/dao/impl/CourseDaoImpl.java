@@ -56,5 +56,13 @@ public class CourseDaoImpl extends SqlSessionDaoSupport implements CourseDao {
 	public int getCount() {
 		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.CourseMapper.getCount");
 	}
+	/**
+	 * @category 根据课程编号查询课程详细信息
+	 * @return
+	 */
+	@Override
+	public Course DetailsCourseBYIdD(Course course) {
+		return this.getSqlSession().selectOne("com.cjsf.wfma.bean.mappingxml.CourseMapper.DetailsCourseBYIdD", course);
+	}
 
 }

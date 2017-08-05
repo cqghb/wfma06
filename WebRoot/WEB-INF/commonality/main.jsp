@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BAfStGXfXpo0uT7e77SFkD95W2POcAij"></script>
 	
 	<style type="text/css">
-			
+		
 	</style>
   </head>
   
@@ -74,14 +74,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 		</div>
 	</nav> --%>
-	 
 		<div class="main-content">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<!-- 轮播课程 -->
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-					  
 						<!-- Indicators -->
 						<ol class="carousel-indicators">
 							<c:forEach items="${coursesList }" var="cl" varStatus="csl">
@@ -129,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<c:choose>
 									<c:when test="${clnum.first }">
 										<div class="item active">
-											<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
+											<img class="lbkc" src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
 											<div class="carousel-caption">
 												<h3>${cl.coursename}</h3>
 												<p>${cl.courseexplain}</p>
@@ -138,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</c:when>
 									<c:otherwise>
 										<div class="item">
-											<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
+											<img class="lbkc" src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
 											<div class="carousel-caption">
 												<h3>${cl.coursename}</h3>
 												<p>${cl.courseexplain}</p>
@@ -278,6 +276,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="<%=basePath%>wfDynamic/newList.action?actionName=wfDynamic/newList.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
+							<table class="xwList">
+								<tbody>
+									<c:forEach items="${dynamicList }" var="dy" varStatus="status">
+									<tr class="one">
+										<td width="30px">${status.index+1 }</td>
+										<td>
+											<a href="<%=basePath%>wfDynamic/detailsDy.action?dynamic.dyid=${dy.dyid }">${dy.dyname }</a>
+										</td>
+										<td style="float: right;width: 160px;">
+											<fmt:formatDate value="${dy.dytime }" type="both"/>
+										</td>
+									</tr>
+									<tr class="two">
+										<td colspan="3">
+											<c:choose>
+												<c:when test="${fn:length(dy.dydetails)>'100'}">
+													<c:set var="dydetails" value="${dy.dydetails }"/>
+													<c:set var="dydetails" value="${fn:substring(dydetails, 0, 100)}" />
+													${dydetails }
+													<div>
+														<a href="<%=basePath%>wfDynamic/detailsDy.action?dynamic.dyid=${dy.dyid }">阅读全部</a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													${dy.dydetails }
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<%-- 
 							<c:forEach items="${dynamicList }" var="dy" varStatus="status">
 								<!-- 编号 标题 内容 日期 -->
 								<span>${status.index+1 }</span>
@@ -300,7 +331,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</c:otherwise>
 									</c:choose>
 								</div>
-							</c:forEach>
+							</c:forEach> --%>
 						</div>
 					</div>
 				</div>
@@ -311,12 +342,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="<%=basePath%>course/kcDetails.action?actionName=course/kcDetails.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
-							<table style="background-color: black;">
-							<tr>
-								<th>课程图片</th>
-								<th>课程名称</th>
-								<th>课程说明</th>
-							</tr>
+							<div class="courseTenList">
+								<c:forEach items="${allCurse }" var="allCurse">
+								<div class="courseItem">
+									<div class="courseImage">
+										<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+											<img alt="课程图片" src="<%=basePath%>${allCurse.courseimg}" width="100%" height="100%"/>
+										</a>
+									</div>
+									<div class="courseName">
+										<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+											${allCurse.coursename }
+										</a>
+									</div>
+									<div class="courseExplain">
+										<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+											${allCurse.courseexplain }
+										</a>
+									</div>
+								</div>
+							</c:forEach>
+							</div>
+							<%-- <table class="courseTable">
 							<c:forEach items="${allCurse }" var="allCurse">
 								<tr>
 									<td>
@@ -326,7 +373,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td>${allCurse.courseexplain }</td>
 								</tr>
 							</c:forEach>
-							</table>
+							</table> --%>
 						</div>
 					</div>
 				</div>
@@ -345,7 +392,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
     
-    <s:debug></s:debug>
+  <%--   <s:debug></s:debug> --%>
   </body>
   	<script type="text/javascript">
 		var map = new BMap.Map("panel-body");          // 创建地图实例  
