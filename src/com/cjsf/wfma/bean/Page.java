@@ -6,7 +6,7 @@ package com.cjsf.wfma.bean;
 public class Page {
 	  
     private Integer pageIndex = 1;// 第几页  
-    private Integer pageSize = 1;// 每页大小 
+    private Integer pageSize = 4;// 每页大小 
     private Integer rowTotal;// 数据总条数
     private Integer pageTotal;// 总共多少页
     private Integer startRow;//起始行

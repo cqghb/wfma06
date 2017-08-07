@@ -263,9 +263,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					pageSize: 3,
 					pageNumber: 1,
 					onSelectPage: function (pageNumber, pageSize){
+						console.log(pageNumber, pageSize);
 						$(this).pagination('loading');// 把分页（pagination）变成正在加载（loaded）状态。
 						$('#stuAll').datagrid({
-							url: '<%=basePath%>htuser/htSelectAllStu?pageNumber='+pageNumber+'&pageSize='+pageSize
+							url: '<%=basePath%>htuser/htSelectAllStu?page.pageIndex='+pageNumber+'&page.pageSize='+pageSize
 						});
 						//$('#naviPagination').panel('refresh', 'show_content.php?page='+pageNumber);
 						/* $(this).pagination('loaded');//把分页（pagination）变成加载完成（loaded）状态。

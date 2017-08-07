@@ -28,11 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/global.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>bootstarp/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/animate.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 	
 	<script type="text/javascript" src="<%=basePath%>bootstarp/js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/swiper.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/swiper.animate1.0.2.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BAfStGXfXpo0uT7e77SFkD95W2POcAij"></script>
 	
@@ -43,37 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body class="all">
   	<s:include value="../common/navgation.jsp"></s:include>
-  
-	<%-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
-			<ul class="nav nav-tabs" role="tablist">
-		  		<c:forEach items="${navList }" var="na" varStatus="status">
-		  			<c:if test="${status.index == 0 }">
-		  				<li role="presentation" class="active">
-		  					<a class="nav navdh" href="${na.naurl }?naid=${na.naid }">${na.naname }</a>
-		  				</li>
-		  			</c:if>
-		  			<c:if test="${status.index > 0 }">
-		  				<li role="presentation">
-			  				<a class="nav navdh" href="${na.naurl }?naid=${na.naid }">${na.naname }</a>
-			  			</li>
-		  			</c:if>
-		  		</c:forEach>
-	  			<li role="presentation">
-	  				<div class="row">
-	  				  <form class="navbar-form navbar-left" role="search">
-					  <div class="col-md-8">
-					  	<input type="text" class="form-control" placeholder="Search">
-					  </div>
-					  <div class="col-md-2">
-					  	<button type="submit" class="btn btn-default">Submit</button>
-					  </div>
-					  </form>
-					</div>
-	  			</li>
-			</ul>
-		</div>
-	</nav> --%>
 		<div class="main-content">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
@@ -91,38 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<li data-target="#carousel-example-generic" data-slide-to="${csl.index }"></li>
 									</c:otherwise>
 								</c:choose>
-								<%-- <c:if test="${csl.first}">
-									<li data-target="#carousel-example-generic" data-slide-to="${csl.index }" class="active"></li>	
-								</c:if>
-								<c:else>
-									<li data-target="#carousel-example-generic" data-slide-to="${csl.index }"></li>
-								</c:else> --%>
 							</c:forEach>
-							<!-- <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
 						</ol>
 						
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
-							<%-- <s:iterator value="coursesList" status="c">
-								<s:if test="c.index==0">
-									<div class="item active">
-										<img src="<%=basePath%><s:property value="c.courseimg"/>" alt="<s:property value="c.coursename"/>"/>
-										<div class="carousel-caption">
-											<h3><s:property value="c.coursename"/></h3>
-											<p><s:property value="c.courseexplain"/></p>
-										</div>
-									</div>
-								</s:if>
-								<s:else>
-									<div class="item">
-										<img src="<%=basePath%><s:property value="c.courseimg"/>" alt="<s:property value="c.coursename"/>"/>
-										<div class="carousel-caption">
-											<h3><s:property value="c.coursename"/></h3>
-											<p><s:property value="c.courseexplain"/></p>
-										</div>
-									</div>
-								</s:else>
-							</s:iterator> --%>
 							<c:forEach items="${coursesList }" var="cl" varStatus="clnum">
 								<c:choose>
 									<c:when test="${clnum.first }">
@@ -144,24 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</div>
 									</c:otherwise>
 								</c:choose>
-								<%-- <s:if test="${clnum.first }">
-									<div class="item active">
-										<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
-										<div class="carousel-caption">
-											<h3>${cl.coursename}</h3>
-											<p>${cl.courseexplain}</p>
-										</div>
-									</div>
-								</s:if>
-								<s:else>
-									<div class="item">
-										<img src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
-										<div class="carousel-caption">
-											<h3>${cl.coursename}</h3>
-											<p>${cl.courseexplain}</p>
-										</div>
-									</div>
-								</s:else> --%>
 							</c:forEach>
 						</div>
 						
@@ -175,99 +101,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span class="sr-only">Next</span>
 						</a>
 					</div>
-					<%-- <div class="panel panel-primary ppp-wfjj">
-						<div class="panel-heading">
-							<span class="panel-title">万府简介</span>
-							<a href="<%=basePath%>wfinformation/wfmajjgd.action" class="gd">更多</a>
-						</div>
-						<div class="panel-body">
-							<c:if test="${wfInformation.wfimgurl !='' }">
-								<div class="wfinimg">
-									<img class="wfimg" src="<%=basePath%>${wfInformation.wfimgurl}"/>
-								</div>
-							</c:if>
-							<div class="wfexplain">
-								<c:choose>
-									<c:when test="${fn:length(wfInformation.wfexplain)>'180'}">
-										<c:set var="wfexplain" value="${wfInformation.wfexplain }"/>
-										<c:set var="wfexplain" value="${fn:substring(wfexplain, 0, 180)}" />
-										${wfexplain }
-										<div>
-											<a href="#" style="color:#000000;">查看全文 >></a>
-										</div>
-									</c:when>
-									<c:otherwise>
-										<div>
-											<font style="color:#000000;">${wfInformation.wfexplain }</font>
-										</div>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-primary ppp-wfjj">
-						<div class="panel-heading">
-							<span class="panel-title">校长简介</span>
-							<a href="<%=basePath%>user/xzDetails.action" class="gd">更多</a>
-						</div>
-						<div class="panel-body">
-							<img alt="校长头像" src="<%=basePath%><s:property value="user.head"/>" height="200px" width="100px"/>
-							<s:property value="user.nickname"/>
-							<s:property value="user.briefintroduction"/>
-						</div>
-					</div>
-					<div class="panel panel-primary ppp-wfjj">
-						<div class="panel-heading">
-							<span class="panel-title">教练</span>
-							<a href="<%=basePath%>user/jlDetails.action?actionName=user/jlDetails.action" class="gd">更多</a>
-						</div>
-						<div class="panel-body">
-							<table style="background-color: black;">
-								<tr>
-									<td>头像</td>
-									<td>姓名</td>
-									<td>地址</td>
-									<td>年龄</td>
-								</tr>
-							<c:forEach items="${jl }" var="jl">
-								<tr>
-									<td>
-										<img alt="教练头像" src="<%=basePath%>${jl.head}" width="30px" height="30px">
-									</td>
-									<td>${jl.name }</td>
-									<td>${jl.address }</td>
-									<td>${jl.age }</td>
-								</tr>
-							</c:forEach>
-							</table>
-						</div>
-					</div>
-					<div class="panel panel-primary ppp-wfjj">
-						<div class="panel-heading">
-							<span class="panel-title">最近报名学员</span>
-							<a href="<%=basePath%>user/xyDetails.action?actionName=user/xyDetails.action" class="gd">更多</a>
-						</div>
-						<div class="panel-body">
-							<table style="background-color: black;">
-								<tr>
-									<td>头像</td>
-									<td>姓名</td>
-									<td>地址</td>
-									<td>年龄</td>
-								</tr>
-							<c:forEach items="${newXY }" var="newXY">
-								<tr>
-									<td>
-										<img alt="学员头像" src="<%=basePath%>${newXY.head}" width="30px" height="30px">
-									</td>
-									<td>${newXY.name }</td>
-									<td>${newXY.address }</td>
-									<td>${newXY.age }</td>
-								</tr>
-							</c:forEach>
-							</table>
-						</div>
-					</div> --%>
 				</div>
 				<div class="swiper-slide">
 					<div class="panel panel-primary">
@@ -308,30 +141,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</c:forEach>
 								</tbody>
 							</table>
-							<%-- 
-							<c:forEach items="${dynamicList }" var="dy" varStatus="status">
-								<!-- 编号 标题 内容 日期 -->
-								<span>${status.index+1 }</span>
-								<span>
-									<a href="#">${dy.dyname }</a>
-								</span>
-								<span>
-									<fmt:formatDate value="${dy.dytime }" pattern="yy-MM-dd"/>
-								</span>
-								<div>
-									<c:choose>
-										<c:when test="${fn:length(dy.dydetails)>'100'}">
-											<c:set var="dydetails" value="${dy.dydetails }"/>
-											<c:set var="dydetails" value="${fn:substring(dydetails, 0, 100)}" />
-											${dydetails }
-											<a href="#">查看全文</a>
-										</c:when>
-										<c:otherwise>
-											${dy.dydetails }
-										</c:otherwise>
-									</c:choose>
-								</div>
-							</c:forEach> --%>
 						</div>
 					</div>
 				</div>
@@ -363,17 +172,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</c:forEach>
 							</div>
-							<%-- <table class="courseTable">
-							<c:forEach items="${allCurse }" var="allCurse">
-								<tr>
-									<td>
-										<img alt="课程图片" src="<%=basePath%>${allCurse.courseimg}" width="30px" height="30px">
-									</td>
-									<td>${allCurse.coursename }</td>
-									<td>${allCurse.courseexplain }</td>
-								</tr>
-							</c:forEach>
-							</table> --%>
 						</div>
 					</div>
 				</div>
@@ -391,23 +189,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="swiper-pagination"></div>
 		</div>
 	</div>
-    
-  <%--   <s:debug></s:debug> --%>
   </body>
   	<script type="text/javascript">
+  		var sContent =
+	  		"<h4 style='margin:0 0 5px 0;padding:0.2em 0'>万府武术培训基地</h4>" + 
+	  		"<img style='float:right;margin:4px' id='imgDemo' src='<%=basePath%>/images/logo/logo.jpg' width='139' height='104' title='万府武术培训基地'/>" + 
+	  		"<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>联系电话：18888888888</p>" + 
+	  		"</div>";
+  	
+  	
 		var map = new BMap.Map("panel-body");          // 创建地图实例  
 		var point = new BMap.Point(103.92514,30.571819);  // 创建点坐标  
 		map.centerAndZoom(point, 20);               // 初始化地图，设置中心点坐标和地图级别 
 		map.addControl(new BMap.NavigationControl());
 		var marker = new BMap.Marker(point);        // 创建标注    
 		map.addOverlay(marker);
-		var myPushpin = new BMap.PushpinTool(map);         // 创建标注工具实例    
-		myPushpin.addEventListener("markend", function(e){  // 监听事件，提示标注点坐标信息   
-		 alert("您标注的位置：" +     
-		       e.marker.getPoint().lng + ", " +     
-		       e.marker.getPoint().lat);    
-		});    
-		myPushpin.open();
+		
+		var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+		map.centerAndZoom(point, 15);
+		map.addOverlay(marker);
+		marker.addEventListener("click", function(){          
+		   this.openInfoWindow(infoWindow);
+		   //图片加载完毕重绘infowindow
+		   document.getElementById('imgDemo').onload = function (){
+			   infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+		   }
+		});
 	</script>
 	<script type="text/javascript">
 	

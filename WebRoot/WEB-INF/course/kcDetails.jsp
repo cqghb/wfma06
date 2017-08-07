@@ -16,51 +16,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>课程分页页面</title>
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/global.css">
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>bootstarp/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/animate.css">
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 		
 		<script type="text/javascript" src="<%=basePath%>bootstarp/js/jquery-3.1.0.min.js"></script>
 		<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
+		<style type="text/css">
+			.courseList{
+				position: fixed;
+				flex-direction:row;
+				flex-wrap:wrap;
+			}
+		</style>
 	</head>
 	<body class="all">
 		<s:include value="../common/navgation.jsp"></s:include>
-		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<table style="background-color: black;">
-			<tr>
-				<th>课程图片</th>
-				<th>课程名称</th>
-				<th>课程说明</th>
-			</tr>
+		<br/><br/><br/><br/><br/>
+		<div class="courseList">
 			<c:forEach items="${allCurse }" var="allCurse">
-				<tr>
-					<td>
-						<img alt="课程图片" src="<%=basePath%>${allCurse.courseimg}" width="30px" height="30px">
-					</td>
-					<td>${allCurse.coursename }</td>
-					<td>${allCurse.courseexplain }</td>
-				</tr>
+				<div class="column animated zoomIn">
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<img src="<%=basePath%>${allCurse.courseimg}" alt="">
+							<div class="caption">
+								<h3>${allCurse.coursename }</h3>
+								<p>${allCurse.courseexplain }</p>
+								<p>
+									<!-- <a href="#" class="btn btn-primary" role="button">查看详情</a> -->
+									<a class="btn btn-primary" role="button" href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+										查看详情
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</c:forEach>
-			<%-- 
-			<s:iterator value="allCurse" status="allCurse">
-				<tr>
-					<td>
-						<img alt="课程图片" src="<%=basePath%><s:property value="allCurse.courseimg"/>" width="30px" height="30px">
-					</td>
-					<td>
-						<s:property value="allCurse.coursename"/>
-					</td>
-					<td>
-						<s:property value="allCurse.courseexplain"/>
-					</td>
-				</tr>
-			</s:iterator> --%>
-			</table>
+		</div>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>	<br/><br/><br/><br/><br/><br/>
 		<s:include value="../common/page.jsp"></s:include>
 		<s:debug></s:debug>
 	</body>
