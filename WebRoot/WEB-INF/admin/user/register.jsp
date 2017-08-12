@@ -12,17 +12,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>register page</title>
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/global.css">
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>bootstarp/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/swiper.css">
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/animate.css">
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>bootstarp/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>FrontLibrary/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>FrontLibrary/bootstrapvalidator/css/bootstrapValidator.css""/>
 		
 		<script type="text/javascript" src="<%=basePath%>bootstarp/js/jquery-3.1.0.min.js"></script>
 		<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
-		<script type="text/javascript" src="<%=basePath%>js/swiper.js"></script>
-		<script type="text/javascript" src="<%=basePath%>js/swiper.animate1.0.2.min.js"></script>
-		<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
+		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrapvalidator/js/bootstrapValidator.js"></script>
+		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrapvalidator/js/language/zh_CN.js"></script>
 		<style type="text/css">
 			.register{
 				margin:0 auto;
@@ -37,111 +37,149 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<div class="register">
 			<h2>欢迎新用户</h2>
-			<form class="form" action="<%=basePath%>userManage/register.action" method="post">
+			<form  id="form-horizontal" class="form-horizontal" action="<%=basePath%>userManage/register.action" method="post">
 				<div class="form-group">
-					<label for="nickname">昵称</label> 
-					<input type="text" 
-						name="user.nickname"
-						class="form-control" 
-						id="nickname"
-						placeholder="请输入昵称" />
+					<label for="nickname" class="col-sm-2 control-label">昵称</label> 
+					<div class="col-sm-10">
+						<input type="text" 
+							name="user.nickname"
+							class="form-control" 
+							id="nickname"
+							placeholder="请输入昵称" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">姓名</label> 
-					<input type="text" 
-						name="user.name"
-						class="form-control" 
-						id="name"
-						placeholder="请输入姓名" />
+					<label for="name" class="col-sm-2 control-label">姓名</label> 
+					<div class="col-sm-10">
+						<input type="text" 
+							name="user.name"
+							class="form-control" 
+							id="name"
+							placeholder="请输入姓名" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">密码</label> 
-					<input type="password" 
-						class="form-control" 
-						name="user.password"
-						id="exampleInputPassword1"
-						placeholder="请输入密码" />
+					<label for="exampleInputPassword1" class="col-sm-2 control-label">密码</label> 
+					<div class="col-sm-10">
+						<input type="password" 
+							class="form-control" 
+							name="user.password"
+							id="exampleInputPassword1"
+							placeholder="请输入密码" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">再次输入密码</label> 
-					<input type="password" 
-						class="form-control" 
-						name="user."
-						id="exampleInputPassword1"
-						placeholder="请再次输入密码" />
+					<label for="exampleInputPassword2" class="col-sm-2 control-label">再次输入密码</label> 
+					<div class="col-sm-10">
+						<input type="password" 
+							class="form-control" 
+							name="user.password2"
+							id="exampleInputPassword2"
+							placeholder="请再次输入密码" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="age">年龄</label> 
-					<input type="text" 
-						name="user.age"
-						class="form-control" 
-						id="age"
-						placeholder="请输入年龄" />
+					<label for="age" class="col-sm-2 control-label">年龄</label>
+					<div class="col-sm-10">
+						<input type="text" 
+							name="user.age"
+							class="form-control" 
+							id="age"
+							placeholder="请输入年龄" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="sex">性别</label>
-					<input type="radio" name="user.sex" value="男"/> 男
-					<input type="radio" name="user.sex" value="女"/> 女
+					<label class="col-sm-2 control-label">性别</label>
+					<div class="col-sm-10">
+						<div class="radio">
+							<label class="radio-inline">
+								<input type="radio" name="user.sex" value="男" checked />男
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="user.sex" value="女" />女
+							</label>
+						</div>
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="brithday">生日</label> 
-					<input type="date" 
-						class="form-control" 
-						name="user.brithday"
-						id="brithday"
-						placeholder="请选择日期" />
+	                <label for="dtp_input2" class="col-sm-2 control-label">生日</label>
+	                <div class="input-group date form_date col-sm-10" data-date="1990-01-01">
+	                    <input id="brithday" 
+							name="user.brithday" 
+							size="16" 
+							type="text" 
+							placeholder="请选择日期"
+							class="form-control"
+							readonly />
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	                </div>
+	            </div>
+				<div class="form-group">
+					<label for="address" class="col-sm-2 control-label">住址</label>
+					<div class="col-sm-10">
+						<input type="text" 
+							class="form-control" 
+							name="user.address"
+							id="address"
+							placeholder="请输入家庭住址" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="address">住址</label> 
-					<input type="text" 
-						class="form-control" 
-						name="user.address"
-						id="address"
-						placeholder="请输入家庭住址" />
+					<label for="tell" class="col-sm-2 control-label">电话号码</label>
+					<div class="col-sm-10">
+						<input type="text" 
+							class="form-control" 
+							name="user.tell"
+							id="tell"
+							placeholder="请输入电话号码" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="tell">电话号码</label> 
-					<input type="text" 
-						class="form-control" 
-						name="user.tell"
-						id="tell"
-						placeholder="请输入电话号码" />
+					<label for="qq" class="col-sm-2 control-label">QQ</label>
+					<div class="col-sm-10">
+						<input type="text" 
+							class="form-control" 
+							name="user.qq"
+							id="qq"
+							placeholder="请输入qq号码" />
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="qq">QQ</label> 
-					<input type="text" 
-						class="form-control" 
-						name="user.qq"
-						id="qq"
-						placeholder="请输入qq号码" />
+					<label for="email" class="col-sm-2 control-label">邮箱</label>
+					<div class="col-sm-10">
+						<input type="email" 
+							class="form-control" 
+							name="user.email"
+							id="email"
+							placeholder="请输入邮箱" />
+					</div> 
 				</div>
 				<div class="form-group">
-					<label for="email">邮箱</label> 
-					<input type="email" 
-						class="form-control" 
-						name="user.email"
-						id="email"
-						placeholder="请输入邮箱" />
+					<label for="type" class="col-sm-2 control-label">类型</label>
+					<div class="col-sm-10">
+						<select class="form-control"
+							name="user.type"
+							class="form-control"
+							id="type">
+							<option>管理员</option>
+							<option>学员</option>
+							<option>教练</option>
+						</select>
+					</div>
+					
 				</div>
 				<div class="form-group">
-					<label for="type">类型</label>
-					<select class="form-control"
-						name="user.type"
-						id="type">
-						<option>管理员</option>
-						<option>学员</option>
-						<option>教练</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="briefintroduction">个人说明</label> 
-					<textarea type="text" 
-						rows="3" 
-						cols="20"
-						name="user.briefintroduction"
-						class="form-control" 
-						id="briefintroduction"
-						placeholder="请输入昵称"></textarea>
+					<label for="briefintroduction" class="col-sm-2 control-label">个人说明</label> 
+					<div class="col-sm-10">
+						<textarea type="text" 
+							rows="3" 
+							cols="20"
+							name="user.briefintroduction"
+							class="form-control" 
+							id="briefintroduction"
+							placeholder="请输入昵称"></textarea>
+					</div>
 				</div>
 				<!-- <div class="form-group">
 					<label for="exampleInputFile">上传头像</label> 
@@ -153,7 +191,158 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<button type="reset" class="btn btn-warning">重置</button>
 				<button type="submit" class="btn btn-primary">注册</button>
 			</form>
-		</div>	
-	
+		</div>
+		
+		
+			
+		<script type="text/javascript">
+		    $('.form_date').datetimepicker({
+		        language:  'zh-CN',//语言
+		        format: "yyyy-MM-dd",//时间显示的格式
+		        startDate: "1990-01-01",//开始日期
+		        autoclose:true,//当选定一个日期后时间选择器关闭
+		        startView: 4,//视图打开之后先选年
+		        minView: 2,//精确到天
+		        todayBtn: false,//不显示底部的今天按钮
+		        todayHighlight: true//当前日期高亮
+		    });
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#form-horizontal').bootstrapValidator({
+					message: 'This value is not valid',
+					feedbackIcons: {
+					    valid: 'glyphicon glyphicon-ok',
+					    invalid: 'glyphicon glyphicon-remove',
+					    validating: 'glyphicon glyphicon-refresh'
+					},
+					fields:{
+						'user.nickname':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								}
+							}
+						},
+						'user.name':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								}
+							}
+						},
+						'user.password':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								},
+								stringLength: {
+			                        min: 6,
+			                        max: 30,
+			                        message: '长度在6到30之间'
+			                    },
+			                    regexp: {
+			                        regexp: /^[a-zA-Z0-9_\.]+$/,
+			                        message: '用户名只能由字母、数字、点和下划线组成'
+			                    },
+			                    identical: {
+			                        field: 'user.password2',
+			                        message: '两次密码输入不一致'
+			                    },
+			                    different: {
+			                        field: 'user.nickname',
+			                        message: '密码不能喝昵称一样'
+			                    }
+							}
+						},
+						'user.password2':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								},
+			                    identical: {
+			                        field: 'user.password',
+			                        message: '两次密码输入不一致'
+			                    },
+			                    different: {
+			                        field: 'user.nickname',
+			                        message: '密码不能喝昵称一样'
+			                    }
+							}
+						},
+						'user.age':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								},
+								digits:{
+									message:'只能输入数字'
+								}
+							}
+						},
+						'user.sex':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								}
+							}
+						},
+						'user.brithday':{
+							validators:{
+								notEmpty:{message:'不能为空'},
+								date: {
+			                        format: 'yyyy-MM-dd',
+			                        message: 'The birthday is not valid'
+			                    }
+							}
+						},
+						'user.address':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								}
+							}
+						},
+						'user.tell':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								}
+							}
+						},
+						'user.qq':{
+							validators:{
+								notEmpty:{
+									message:'不能为空'
+								}
+							}
+						},
+						'user.email': {
+			                validators: {
+			                	emailAddress: {
+			                        message: '邮箱格式不正确'
+			                    }
+			                }
+			            },
+			            'user.type': {
+			                validators: {
+			                	notEmpty: {
+			                    	notEmpty:{message:'不能为空'}
+			                    }
+			                }
+			            },
+			            'user.briefintroduction': {
+			                validators: {
+			                	notEmpty:{
+									message:'不能为空'
+								}
+			                }
+			            }
+					}
+				});
+			});
+			
+		</script>
 	</body>
+	
 </html>
