@@ -180,5 +180,22 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		}
 		
 	}
+	
+	/**
+	 * @category 用户注册
+	 * @param user
+	 * @return
+	 * @author Administrator
+	 * @time 2017/08/10
+	 */
+	public boolean registerD(User user){
+		int i = this.getSqlSession().insert("com.cjsf.wfma.bean.mappingxml.UserMapper.HtAddStuD", user);
+		if(i>0){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
 
 }

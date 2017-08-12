@@ -166,7 +166,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div class="courseExplain">
 										<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
-											${allCurse.courseexplain }
+											<c:choose>
+												<c:when test="${fn:length(allCurse.courseexplain)>'10'}">
+													<c:set var="courseexplain" value="${fn:substring(allCurse.courseexplain, 0, 10)}" />
+													${courseexplain }
+												</c:when>
+												<c:otherwise>
+													${allCurse.courseexplain }
+												</c:otherwise>
+											</c:choose>
 										</a>
 									</div>
 								</div>

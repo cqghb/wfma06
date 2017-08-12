@@ -3,6 +3,8 @@
 
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
 String path = request.getContextPath();
@@ -41,9 +43,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<img src="<%=basePath%>${allCurse.courseimg}" alt="">
 							<div class="caption">
 								<h3>${allCurse.coursename }</h3>
-								<p>${allCurse.courseexplain }</p>
 								<p>
-									<!-- <a href="#" class="btn btn-primary" role="button">查看详情</a> -->
+									<c:choose>
+										<c:when test="${fn:length(allCurse.courseexplain)>'10'}">
+											<c:set var="courseexplain" value="${fn:substring(allCurse.courseexplain, 0, 10)}" />
+											${courseexplain }
+										</c:when>
+										<c:otherwise>
+											${allCurse.courseexplain }
+										</c:otherwise>
+									</c:choose>
+								</p>
+								<p>
 									<a class="btn btn-primary" role="button" href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
 										查看详情
 									</a>

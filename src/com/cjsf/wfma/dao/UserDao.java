@@ -98,4 +98,12 @@ public interface UserDao {
 	 * @return
 	 */
 	public boolean HtRemoveStuD(User user);
+	/**
+	 * @category 用户注册
+	 * @param user
+	 * @return
+	 * @author Administrator
+	 * @time 2017/08/10
+	 */
+	public boolean registerD(User user);
 }

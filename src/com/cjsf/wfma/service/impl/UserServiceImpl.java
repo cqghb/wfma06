@@ -29,6 +29,16 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	/**
+	 * @category 用户注册
+	 * @param user
+	 * @return
+	 * @author Administrator
+	 * @time 2017/08/10
+	 */
+	public boolean registerS(User user){
+		return userDao.registerD(user);
+	}
+	/**
 	 * @author Administrator
 	 * @category 用户登录
 	 * @param u

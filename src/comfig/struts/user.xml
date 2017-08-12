@@ -122,4 +122,15 @@
 			<result name="success">/WEB-INF/admin/user/adminifm.jsp</result>
 		</action>
 	</package>
+	<!-- 用户管理有关的视图分发控制 -->
+	<package name="userManage" namespace="/userManage" extends="struts-default">
+		<!-- 跳转到用户注册视图  -->
+		<action name="registerView" class="userAction" method="registerView">
+			<result name="success">/WEB-INF/admin/user/register.jsp</result>
+		</action>
+		<!-- 执行用户注册业务逻辑  -->
+		<action name="register" class="userAction" method="register">
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
 </struts>

@@ -1,7 +1,6 @@
 package com.cjsf.wfma.action;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import com.cjsf.wfma.bean.Page;
 import com.cjsf.wfma.bean.User;
 import com.cjsf.wfma.service.UserService;
-//import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -37,13 +35,27 @@ public class UserAction extends ActionSupport {
 	@Autowired
 	private UserService userService;
 	
+	/**
+	 * @category 用户注册业务
+	 * @author Administrator
+	 * @return
+	 * @time 2017/08/10
+	 */
+	public String register(){
+		System.out.println("用户的注册信息="+user);
+		boolean r = userService.registerS(user);
+		if(r){
+			return "success";
+		}else{
+			return "error";
+		}
+	}
 	
 	/**
 	 * @category 处理修改用户信息事务请求
 	 * @return 真或者假
 	 */
 	public String EditUserAction(){
-		System.out.println("usereidtusereidtusereidt---------------"+user);
 		if(userService.editUserS(user)){
 			return "success";
 		}else{
@@ -87,7 +99,13 @@ public class UserAction extends ActionSupport {
 	public String teacherManAction(){
 		return "success";
 	}
-	
+	/**
+	 * @category 用户注册页面
+	 * @return
+	 */
+	public String registerView(){
+		return "success";
+	}
 	/**
 	 * @category 点击查看所有学员跳转的视图 
 	 * @return

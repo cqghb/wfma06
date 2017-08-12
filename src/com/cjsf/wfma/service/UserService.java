@@ -99,4 +99,12 @@ public interface UserService {
 	 * @return
 	 */
 	public boolean HtRemoveStuS(User user);
+	/**
+	 * @category 用户注册
+	 * @param user
+	 * @return
+	 * @author Administrator
+	 * @time 2017/08/10
+	 */
+	public boolean registerS(User user);
 }

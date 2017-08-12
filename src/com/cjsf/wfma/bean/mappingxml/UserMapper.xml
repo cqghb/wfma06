@@ -90,6 +90,7 @@
 			<if test="address != null">address,</if>
 			<if test="tell != null">tell,</if>
 			<if test="qq != null">qq,</if>
+			<if test="type != null">type,</if>
 			<if test="email != null">email,</if>
 			<if test="briefintroduction != null">briefintroduction,</if>
 			<if test="head != null">head</if>
@@ -104,6 +105,7 @@
 			<if test="address != null">#{address},</if>
 			<if test="tell != null">#{tell},</if>
 			<if test="qq != null">#{qq},</if>
+			<if test="type != null">#{type},</if>
 			<if test="email != null">#{email},</if>
 			<if test="briefintroduction != null">#{briefintroduction},</if>
 			<if test="head != null">#{head}</if>
