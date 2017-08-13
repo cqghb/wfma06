@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrapvalidator/js/bootstrapValidator.js"></script>
 		<script type="text/javascript" src="<%=basePath%>FrontLibrary/bootstrapvalidator/js/language/zh_CN.js"></script>
+		<script type="text/javascript" src="<%=basePath%>FrontLibrary/moment/moment.js"></script>
 		<style type="text/css">
 			.register{
 				margin:0 auto;
@@ -109,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							size="16" 
 							type="text" 
 							placeholder="请选择日期"
-							class="form-control"
+							class="form-control form_datetime"
 							readonly />
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -188,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						id="exampleInputFile" />
 						<p class="help-block">Example block-level help text here.</p>
 				</div> -->
-				<button type="reset" class="btn btn-warning">重置</button>
+				<button type="reset" class="btn btn-warning" id="resetBtn">重置</button>
 				<button type="submit" class="btn btn-primary">注册</button>
 			</form>
 		</div>
@@ -198,17 +199,329 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 		    $('.form_date').datetimepicker({
 		        language:  'zh-CN',//语言
-		        format: "yyyy-MM-dd",//时间显示的格式
+		       // format: "yyyy-mm-dd",//时间显示的格式
 		        startDate: "1990-01-01",//开始日期
 		        autoclose:true,//当选定一个日期后时间选择器关闭
 		        startView: 4,//视图打开之后先选年
 		        minView: 2,//精确到天
 		        todayBtn: false,//不显示底部的今天按钮
 		        todayHighlight: true//当前日期高亮
+		    })
+		    .on('hide',function(e){
+		    	
+		    	//e.date = moment(e.date).format('YYYY-MM-DD');
+		    	console.log(e);
+		    	$('#form-horizontal').data('bootstrapValidator')  
+                .updateStatus('user.brithday', 'NOT_VALIDATED',null)  
+                .validateField('user.brithday');
+		    });
+		    
+		    $('#form-horizontal').bootstrapValidator({
+				message: 'This value is not valid',
+				feedbackIcons: {
+				    valid: 'glyphicon glyphicon-ok',
+				    invalid: 'glyphicon glyphicon-remove',
+				    validating: 'glyphicon glyphicon-refresh'
+				},
+				fields:{
+					'user.nickname':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.name':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.password':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+							stringLength: {
+		                        min: 6,
+		                        max: 30,
+		                        message: '长度在6到30之间'
+		                    },
+		                    regexp: {
+		                        regexp: /^[a-zA-Z0-9_\.]+$/,
+		                        message: '用户名只能由字母、数字、点和下划线组成'
+		                    },
+		                    identical: {
+		                        field: 'user.password2',
+		                        message: '两次密码输入不一致'
+		                    },
+		                    different: {
+		                        field: 'user.nickname',
+		                        message: '密码不能喝昵称一样'
+		                    }
+						}
+					},
+					'user.password2':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+		                    identical: {
+		                        field: 'user.password',
+		                        message: '两次密码输入不一致'
+		                    },
+		                    different: {
+		                        field: 'user.nickname',
+		                        message: '密码不能喝昵称一样'
+		                    }
+						}
+					},
+					'user.age':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+							digits:{
+								message:'只能输入数字'
+							}
+						}
+					},
+					'user.sex':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.brithday':{
+						validators:{
+							notEmpty:{message:'不能为空'},
+							date: {
+		                        format: 'MM/DD/YYYY h:m A',
+		                        message: '日期格式不对'
+		                    }
+						}
+					},
+					'user.address':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.tell':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+							stringLength: {  
+		                        min: 11,  
+		                        max: 11,  
+		                        message: '请输入11位手机号码'  
+		                    },
+		                    regexp: {  
+		                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,  
+		                        message: '请输入正确的手机号码'  
+		                    }
+						}
+					},
+					'user.qq':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.email': {
+		                validators: {
+		                	notEmpty:{
+								message:'不能为空'
+							},
+		                	emailAddress: {
+		                        message: '邮箱格式不正确'
+		                    }
+		                }
+		            },
+		            'user.type': {
+		                validators: {
+		                	notEmpty: {
+		                    	notEmpty:{message:'不能为空'}
+		                    }
+		                }
+		            },
+		            'user.briefintroduction': {
+		                validators: {
+		                	notEmpty:{
+								message:'不能为空'
+							}
+		                }
+		            }
+				}
+			}).on('status.field.bv',function(e,date){
+				//console.log($(e.target));
+				//console.log(date.bv);
+				//date.bv.disableSubmitButtons(false);
+			});
+			$('#resetBtn').click(function() {//重置按钮点击之后移除验证信息
+		        $('#form-horizontal').data('bootstrapValidator').resetForm(true);
 		    });
 		</script>
 		<script type="text/javascript">
-			$(document).ready(function() {
+		
+			/* $('#form-horizontal').bootstrapValidator({
+				message: 'This value is not valid',
+				feedbackIcons: {
+				    valid: 'glyphicon glyphicon-ok',
+				    invalid: 'glyphicon glyphicon-remove',
+				    validating: 'glyphicon glyphicon-refresh'
+				},
+				fields:{
+					'user.nickname':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.name':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.password':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+							stringLength: {
+		                        min: 6,
+		                        max: 30,
+		                        message: '长度在6到30之间'
+		                    },
+		                    regexp: {
+		                        regexp: /^[a-zA-Z0-9_\.]+$/,
+		                        message: '用户名只能由字母、数字、点和下划线组成'
+		                    },
+		                    identical: {
+		                        field: 'user.password2',
+		                        message: '两次密码输入不一致'
+		                    },
+		                    different: {
+		                        field: 'user.nickname',
+		                        message: '密码不能喝昵称一样'
+		                    }
+						}
+					},
+					'user.password2':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+		                    identical: {
+		                        field: 'user.password',
+		                        message: '两次密码输入不一致'
+		                    },
+		                    different: {
+		                        field: 'user.nickname',
+		                        message: '密码不能喝昵称一样'
+		                    }
+						}
+					},
+					'user.age':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+							digits:{
+								message:'只能输入数字'
+							}
+						}
+					},
+					'user.sex':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.brithday':{
+						validators:{
+							notEmpty:{message:'不能为空'},
+							date: {
+		                        format: 'yyyy-mm-dd',
+		                        message: '日期格式不对'
+		                    }
+						}
+					},
+					'user.address':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.tell':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							},
+							stringLength: {  
+		                        min: 11,  
+		                        max: 11,  
+		                        message: '请输入11位手机号码'  
+		                    },
+		                    regexp: {  
+		                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,  
+		                        message: '请输入正确的手机号码'  
+		                    }
+						}
+					},
+					'user.qq':{
+						validators:{
+							notEmpty:{
+								message:'不能为空'
+							}
+						}
+					},
+					'user.email': {
+		                validators: {
+		                	notEmpty:{
+								message:'不能为空'
+							},
+		                	emailAddress: {
+		                        message: '邮箱格式不正确'
+		                    }
+		                }
+		            },
+		            'user.type': {
+		                validators: {
+		                	notEmpty: {
+		                    	notEmpty:{message:'不能为空'}
+		                    }
+		                }
+		            },
+		            'user.briefintroduction': {
+		                validators: {
+		                	notEmpty:{
+								message:'不能为空'
+							}
+		                }
+		            }
+				}
+			}).on('status.field.bv',function(e,date){
+				//console.log($(e.target));
+				//console.log(date.bv);
+				//date.bv.disableSubmitButtons(false);
+			});
+			$('#resetBtn').click(function() {//重置按钮点击之后移除验证信息
+		        $('#form-horizontal').data('bootstrapValidator').resetForm(true);
+		    }); */
+		
+			
+			/* $(document).ready(function() {
 				$('#form-horizontal').bootstrapValidator({
 					message: 'This value is not valid',
 					feedbackIcons: {
@@ -340,7 +653,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            }
 					}
 				});
-			});
+			}); */
 			
 		</script>
 	</body>
