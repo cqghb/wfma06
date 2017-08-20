@@ -12,22 +12,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-	
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/global.css">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>bootstarp/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/swiper.css">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
-	
-	<script type="text/javascript" src="<%=basePath%>bootstarp/js/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
-	<script type="text/javascript" src="<%=basePath%>js/swiper.js"></script>
-	<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BAfStGXfXpo0uT7e77SFkD95W2POcAij"></script>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+			
+		<%-- <link rel="stylesheet" type="text/css" href="<%=basePath%>css/global.css">
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>bootstarp/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/swiper.css">
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 		
-</head>
+		<script type="text/javascript" src="<%=basePath%>bootstarp/js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/swiper.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/main.js"></script> --%>
+		<style type="text/css">
+			.modal{
+				color:black;
+			}
+		</style>		
+	</head>
 <body>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,6 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  			<li role="presentation">
 	  				<button type="button" 
 		  				class="btn btn-primary btn-lg" 
+		  				style="margin-top:10px;"
 		  				data-toggle="modal" 
 		  				data-target="#myModal">登录</button>
 	  			</li>
@@ -93,8 +97,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		tabindex="-1" 
 		role="dialog"
 		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
+		<div class="modal-dialog animated slideInDown" role="document">
+			<div class="modal-content" style="width:60%;margin:auto;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
@@ -103,11 +107,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h4 class="modal-title" id="myModalLabel">用户登录</h4>
 				</div>
 				<div class="modal-body">
-				
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary">登录</button>
+					<form class="form-horizontal" action="<%=basePath%>user/loginAction" method="post">
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="nickname">用户名</label>
+							<div class="controls col-sm-8">
+								<input type="text" name="user.nickname" id="nickname" placeholder="请输入用户名"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="password">密码</label>
+							<div class="controls col-sm-8">
+								<input type="password" name="user.password" id="password" placeholder="请输入密码"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="sf">身份</label>
+							<div class="controls col-sm-8">
+								<select class="form-control" id="sf" name="user.type">
+									<option value="学员">学员</option>
+									<option value="教练">教练</option>
+									<option value="管理员">管理员</option>
+								</select>
+							</div>
+							
+						</div>
+						<div class="form-group">
+							<div class="controls col-sm-12">
+								<button type="submit" class="btn btn-primary">登录</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
