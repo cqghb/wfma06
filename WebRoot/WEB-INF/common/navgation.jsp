@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  			</li>
 		  			</c:if> --%>
 				</s:iterator>
-	  			<li role="presentation">
+	  			<!-- <li role="presentation">
 	  				<div class="row">
 	  				  <form class="navbar-form navbar-left" role="search">
 					  <div class="col-md-8">
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  </div>
 					  </form>
 					</div>
-	  			</li>
+	  			</li> -->
 	  			<li role="presentation">
 	  				<button type="button" 
 		  				class="btn btn-primary btn-lg" 

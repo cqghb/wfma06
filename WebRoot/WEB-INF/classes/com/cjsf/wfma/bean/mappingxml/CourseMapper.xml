@@ -6,7 +6,7 @@
     </select>
     
     <select id="selectAllCourseD" resultType="com.cjsf.wfma.bean.Course">
-    	SELECT * FROM course LIMIT 10
+    	SELECT * FROM course LIMIT 6
     </select>
     <select id="getCount" resultType="int">
     	SELECT COUNT(*) FROM course

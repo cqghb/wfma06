@@ -31,6 +31,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/animate.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
 	
+<!-- 	<link rel="stylesheet" type="text/css" href="http://hovertree.com/texiao/jquery/39/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="http://hovertree.com/texiao/jquery/39/css/default.css">
+	<link rel="stylesheet" href="http://hovertree.com/texiao/jquery/39/css/base.css" /> -->
+	<link rel="stylesheet" href="<%=basePath%>css/zz.css" />
+	
 	<script type="text/javascript" src="<%=basePath%>bootstarp/js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>bootstarp/js/bootstrap.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/swiper.js"></script>
@@ -39,6 +44,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BAfStGXfXpo0uT7e77SFkD95W2POcAij"></script>
 	
 	<style type="text/css">
+		.effects .img{
+			width: 100%;
+		}
 		
 	</style>
   </head>
@@ -74,7 +82,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<img class="lbkc" src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
 											<div class="carousel-caption">
 												<h3>${cl.coursename}</h3>
-												<p>${cl.courseexplain}</p>
+												<p>
+													<c:choose>
+														<c:when test="${fn:length(cl.courseexplain)>'10'}">
+															<c:set var="courseexplain" value="${fn:substring(cl.courseexplain, 0, 10)}" />
+															${courseexplain }
+														</c:when>
+														<c:otherwise>
+															${cl.courseexplain }
+														</c:otherwise>
+													</c:choose>
+												</p>
 											</div>
 										</div>
 									</c:when>
@@ -83,7 +101,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<img class="lbkc" src="<%=basePath%>${cl.courseimg}" alt="${cl.coursename}">
 											<div class="carousel-caption">
 												<h3>${cl.coursename}</h3>
-												<p>${cl.courseexplain}</p>
+												<p>
+													<c:choose>
+														<c:when test="${fn:length(cl.courseexplain)>'10'}">
+															<c:set var="courseexplain" value="${fn:substring(cl.courseexplain, 0, 10)}" />
+															${courseexplain }
+														</c:when>
+														<c:otherwise>
+															${cl.courseexplain }
+														</c:otherwise>
+													</c:choose>
+												</p>
 											</div>
 										</div>
 									</c:otherwise>
@@ -151,7 +179,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="<%=basePath%>course/kcDetails.action?actionName=course/kcDetails.action" class="gd">更多</a>
 						</div>
 						<div class="panel-body">
-							<div class="courseTenList">
+							<div id="effect-1" class="courseTenList effects clearfix">
+								<c:forEach items="${allCurse }" var="allCurse">
+									<div class="column">
+										<div class="col-sm-6 col-md-4">
+											<div class="thumbnail img">
+												<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+													<img alt="课程图片" src="<%=basePath%>${allCurse.courseimg}" width="100%" height="100%"/>
+												</a>
+												<div class="overlay">
+													<h7>
+														<a class="expand close-overlay" href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+															${allCurse.coursename }
+														</a>
+													</h7>
+													
+													<p>
+														<a class="expand" href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+															<c:choose>
+																<c:when test="${fn:length(allCurse.courseexplain)>'10'}">
+																	<c:set var="courseexplain" value="${fn:substring(allCurse.courseexplain, 0, 10)}" />
+																	${courseexplain }
+																</c:when>
+																<c:otherwise>
+																	${allCurse.courseexplain }
+																</c:otherwise>
+															</c:choose>
+														</a>
+													</p>
+												</div>
+												<%-- <div class="caption">
+													<h3>
+														${allCurse.coursename }
+														<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+															${allCurse.coursename }
+														</a>
+													</h3>
+													<p>
+														<a href="<%=basePath%>course/DetailsCourseBYId.action?course.courseid=${allCurse.courseid}">
+															<c:choose>
+																<c:when test="${fn:length(allCurse.courseexplain)>'10'}">
+																	<c:set var="courseexplain" value="${fn:substring(allCurse.courseexplain, 0, 10)}" />
+																	${courseexplain }
+																</c:when>
+																<c:otherwise>
+																	${allCurse.courseexplain }
+																</c:otherwise>
+															</c:choose>
+														</a>
+													</p>
+												</div> --%>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							
+							<%-- 
 								<c:forEach items="${allCurse }" var="allCurse">
 								<div class="courseItem">
 									<div class="courseImage">
@@ -178,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</a>
 									</div>
 								</div>
-							</c:forEach>
+							</c:forEach> --%>
 							</div>
 						</div>
 					</div>
@@ -227,6 +310,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 	
 		$('.navdh').click(function (event){
+			
+			console.log(this);
+			$(this).addClass("active");
 			event.preventDefault();
 			event.stopPropagation();
 			$('.main-content').load(this.href);
@@ -290,6 +376,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        shadowOffset:20,
 		        shadowScale:0.94
 		    }
+		});
+	</script>
+	<script type="text/javascript" src="http://hovertree.com/texiao/jquery/39/js/modernizr.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if (Modernizr.touch) {
+				// show the close overlay button
+				$(".close-overlay").removeClass("hidden");
+				// handle the adding of hover class when clicked
+				$(".img").click(function(e){
+					if (!$(this).hasClass("hover")) {
+						$(this).addClass("hover");
+					}
+				});
+				// handle the closing of the overlay
+				$(".close-overlay").click(function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					if ($(this).closest(".img").hasClass("hover")) {
+						$(this).closest(".img").removeClass("hover");
+					}
+				});
+			} else {
+				// handle the mouseenter functionality
+				$(".img").mouseenter(function(){
+					$(this).addClass("hover");
+				})
+				// handle the mouseleave functionality
+				.mouseleave(function(){
+					$(this).removeClass("hover");
+				});
+			}
 		});
 	</script>
 </html>
