@@ -81,17 +81,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  </form>
 					</div>
 	  			</li> -->
-	  			<li role="presentation">
+	  			<%-- <c:choose>
+	  				<c:when test="${session.user.name }!=null">
+	  					<li role="presentation">
+	  						<a class="nav navdh" href="#">
+		 						<s:property value="#session.user.name"/>
+		 						${session.user.name }
+		 					</a>
+	  					</li>
+	  				</c:when>
+	  				<c:otherwise>
+	  					<li role="presentation">
+			  				<button type="button" 
+				  				class="btn btn-primary btn-lg" 
+				  				style="margin-top:10px;"
+				  				data-toggle="modal" 
+				  				data-target="#myModal">登录</button>
+			  			</li>
+	  				</c:otherwise>
+	  			</c:choose> --%>
+	  			<c:if test="${!empty session.user.name }">
+	  				<li role="presentation">
+ 						<a class="nav navdh" href="#">
+	 						${session.user.name }
+	 					</a>
+ 					</li>
+	  			</c:if>
+	  			<c:if test="${empty session.user.name }">
+	  				<li role="presentation">
+		  				<button type="button" 
+			  				class="btn btn-primary btn-lg" 
+			  				style="margin-top:10px;"
+			  				data-toggle="modal" 
+			  				data-target="#myModal">登录</button>
+		  			</li>
+	  			</c:if>
+	  			<!-- <li role="presentation">
 	  				<button type="button" 
 		  				class="btn btn-primary btn-lg" 
 		  				style="margin-top:10px;"
 		  				data-toggle="modal" 
 		  				data-target="#myModal">登录</button>
-	  			</li>
+	  			</li> -->
 			</ul>
 		</div>
 	</nav>
-
+<%-- 	<s:debug></s:debug> --%>
 	<div class="modal fade" 
 		id="myModal" 
 		tabindex="-1" 

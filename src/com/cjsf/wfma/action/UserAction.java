@@ -237,7 +237,6 @@ public class UserAction extends ActionSupport {
 	 * @return success 
 	 */
 	public String login(){
-		System.out.println(user);
 		//Gson gson = new Gson();
 		if(user.getType().equals("管理员") || user.getType()=="管理员"){//管理员登录
 			user = userService.login(user);
